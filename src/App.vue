@@ -5,6 +5,9 @@
     </div>
 
     <div class="content">
+      <input v-bind:value="textToParse" v-on:input="updateText($event.target.value)" />
+
+      <button @click="parseText()">Parse</button>
       <button @click="log()">log</button>
       <button @click="getValue()">get value</button>
 
@@ -61,6 +64,7 @@ export default {
   name: "app",
   data: () => {
     return {
+      textToParse: "",
       attributes: {
         technical: {
           finishing: {
@@ -285,6 +289,29 @@ export default {
     },
     updateValue(obj) {
       this.attributes[obj.type][obj.id].rating = obj.newRating;
+    },
+    updateText(text) {
+      this.textToParse = text;
+    },
+    parseText() {
+      const ratingsArray = this.textToParse
+        .replace(/[^\d\s]/g, "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .split(" ");
+      const technicalKeys = Object.keys(this.attributes.technical);
+      const mentalKeys = Object.keys(this.attributes.mental);
+      const physicalKeys = Object.keys(this.attributes.physical);
+
+      for (let i = 0; i < 14; i++) {
+        this.attributes.technical[technicalKeys[i]].rating = ratingsArray[i];
+      }
+      for (let i = 14; i < 28; i++) {
+        this.attributes.mental[mentalKeys[i - 14]].rating = ratingsArray[i];
+      }
+      for (let i = 28; i < 36; i++) {
+        this.attributes.physical[physicalKeys[i - 28]].rating = ratingsArray[i];
+      }
     }
   }
 };
