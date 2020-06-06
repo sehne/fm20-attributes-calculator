@@ -5,10 +5,12 @@
     </div>
 
     <div class="content">
-      <button @click="log()">Parse Stats</button>
+      <button @click="log()">log</button>
+      <button @click="getValue()">get value</button>
 
       <div class="attributes">
         <div class="attribute-list technical">
+          technical
           <div v-for="attributeKey in Object.keys(attributes.technical)" v-bind:key="attributeKey">
             <attribute
               type="technical"
@@ -19,6 +21,7 @@
           </div>
         </div>
         <div class="attribute-list mental">
+          mental
           <div v-for="attributeKey in Object.keys(attributes.mental)" v-bind:key="attributeKey">
             <attribute
               type="mental"
@@ -29,6 +32,7 @@
           </div>
         </div>
         <div class="attribute-list physical">
+          physical
           <div v-for="attributeKey in Object.keys(attributes.physical)" v-bind:key="attributeKey">
             <attribute
               type="physical"
@@ -38,12 +42,21 @@
             />
           </div>
         </div>
+        <div class="attribute-list roles">
+          roles
+          <div
+            v-for="role in getRoles"
+            v-bind:key="role.id"
+          >{{role.label}}: {{role.rating.toFixed(2)}}</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import roles from "./assets/roles";
+
 export default {
   name: "app",
   data: () => {
@@ -52,191 +65,218 @@ export default {
         technical: {
           finishing: {
             id: "finishing",
-            rating: "1",
+            rating: "10",
             label: "Abschluss"
           },
           firstTouch: {
             id: "firstTouch",
-            rating: "1",
+            rating: "10",
             label: "Ballannahme"
           },
           marking: {
             id: "marking",
-            rating: "1",
+            rating: "10",
             label: "Deckung"
           },
           dribbling: {
             id: "dribbling",
-            rating: "1",
+            rating: "10",
             label: "Dribbling"
           },
           corners: {
             id: "corners",
-            rating: "1",
+            rating: "10",
             label: "Ecken"
           },
           penaltyTaking: {
             id: "penaltyTaking",
-            rating: "1",
+            rating: "10",
             label: "Elfmeter"
           },
           crossing: {
             id: "crossing",
-            rating: "1",
+            rating: "10",
             label: "Flanken"
           },
           freeKickTaking: {
             id: "freeKickTaking",
-            rating: "1",
+            rating: "10",
             label: "Freistöße"
           },
           heading: {
             id: "heading",
-            rating: "1",
+            rating: "10",
             label: "Kopfballtechnik"
           },
           passing: {
             id: "passing",
-            rating: "1",
+            rating: "10",
             label: "Passen"
           },
           tackling: {
             id: "tackling",
-            rating: "1",
+            rating: "10",
             label: "Tackling"
           },
           technique: {
             id: "technique",
-            rating: "1",
+            rating: "10",
             label: "Technik"
           },
           longThrows: {
             id: "longThrows",
-            rating: "1",
+            rating: "10",
             label: "Weite Einwürfe"
           },
           longShots: {
             id: "longShots",
-            rating: "1",
+            rating: "10",
             label: "Weitschüsse"
           }
         },
         mental: {
           aggression: {
             id: "aggression",
-            rating: "1",
+            rating: "10",
             label: "Aggressivität"
           },
           anticipation: {
             id: "anticipation",
-            rating: "1",
+            rating: "10",
             label: "Antizipation"
           },
           workRate: {
             id: "workRate",
-            rating: "1",
+            rating: "10",
             label: "Einsatzfreude"
           },
           decisions: {
             id: "decisions",
-            rating: "1",
+            rating: "10",
             label: "Entscheidungen"
           },
           flair: {
             id: "flair",
-            rating: "1",
+            rating: "10",
             label: "Flair"
           },
           leadership: {
             id: "leadership",
-            rating: "1",
+            rating: "10",
             label: "Führungsqualitäten"
           },
           concentration: {
             id: "concentration",
-            rating: "1",
+            rating: "10",
             label: "Konzentration"
           },
           bravery: {
             id: "bravery",
-            rating: "1",
+            rating: "10",
             label: "Mut"
           },
           composure: {
             id: "composure",
-            rating: "1",
+            rating: "10",
             label: "Nervenstärke"
           },
           offTheBall: {
             id: "offTheBall",
-            rating: "1",
+            rating: "10",
             label: "Ohne Ball"
           },
           positioning: {
             id: "positioning",
-            rating: "1",
+            rating: "10",
             label: "Stellungsspiel"
           },
           teamwork: {
             id: "teamwork",
-            rating: "1",
+            rating: "10",
             label: "Teamwork"
           },
           vision: {
             id: "vision",
-            rating: "1",
+            rating: "10",
             label: "Übersicht"
           },
           determination: {
             id: "determination",
-            rating: "1",
+            rating: "10",
             label: "Zielstrebigkeit"
           }
         },
         physical: {
           acceleration: {
             id: "acceleration",
-            rating: "1",
+            rating: "10",
             label: "Antritt"
           },
           stamina: {
             id: "stamina",
-            rating: "1",
+            rating: "10",
             label: "Ausdauer"
           },
           balance: {
-            id: "technique",
-            rating: "1",
+            id: "balance",
+            rating: "10",
             label: "Balance"
           },
           agility: {
             id: "agility",
-            rating: "1",
+            rating: "10",
             label: "Beweglichkeit"
           },
           naturalFitness: {
             id: "naturalFitness",
-            rating: "1",
+            rating: "10",
             label: "Grundfitness"
           },
           strength: {
             id: "strength",
-            rating: "1",
+            rating: "10",
             label: "Kraft"
           },
           pace: {
             id: "pace",
-            rating: "1",
+            rating: "10",
             label: "Schnelligkeit"
           },
           jumpingHeight: {
             id: "jumpingHeight",
-            rating: "1",
+            rating: "10",
             label: "Sprunghöhe"
           }
         }
       }
     };
+  },
+  computed: {
+    getRoles: function() {
+      let myRoles = roles.map(r => {
+        let count = 0;
+        let value = 0;
+        for (let key in r.attributes.technical) {
+          count += r.attributes.technical[key];
+          value +=
+            this.attributes.technical[key].rating * r.attributes.technical[key];
+        }
+        for (let key in r.attributes.mental) {
+          count += r.attributes.mental[key];
+          value +=
+            this.attributes.mental[key].rating * r.attributes.mental[key];
+        }
+        for (let key in r.attributes.physical) {
+          count += r.attributes.physical[key];
+          value +=
+            this.attributes.physical[key].rating * r.attributes.physical[key];
+        }
+        return { id: r.id, label: r.label, rating: value / count };
+      });
+      return myRoles.sort((a, b) => {
+        return b.rating - a.rating;
+      });
+    }
   },
   methods: {
     log() {
