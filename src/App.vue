@@ -9,16 +9,35 @@
 
       <div class="attributes">
         <div class="attribute-list technical">
-          <div v-for="attributeKey in Object.keys(attributes)" v-bind:key="attributeKey">
+          <div v-for="attributeKey in Object.keys(attributes.technical)" v-bind:key="attributeKey">
             <attribute
-              v-bind:attribute="attributes[attributeKey]"
-              v-bind:label="attributes[attributeKey].label"
+              type="technical"
+              v-bind:attribute="attributes.technical[attributeKey]"
+              v-bind:label="attributes.technical[attributeKey].label"
               @[attributeKey]="updateValue"
             />
           </div>
         </div>
-        <div class="attribute-list mental"></div>
-        <div class="attribute-list physical"></div>
+        <div class="attribute-list mental">
+          <div v-for="attributeKey in Object.keys(attributes.mental)" v-bind:key="attributeKey">
+            <attribute
+              type="mental"
+              v-bind:attribute="attributes.mental[attributeKey]"
+              v-bind:label="attributes.mental[attributeKey].label"
+              @[attributeKey]="updateValue"
+            />
+          </div>
+        </div>
+        <div class="attribute-list physical">
+          <div v-for="attributeKey in Object.keys(attributes.physical)" v-bind:key="attributeKey">
+            <attribute
+              type="physical"
+              v-bind:attribute="attributes.physical[attributeKey]"
+              v-bind:label="attributes.physical[attributeKey].label"
+              @[attributeKey]="updateValue"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -30,75 +49,191 @@ export default {
   data: () => {
     return {
       attributes: {
-        finishing: {
-          id: "finishing",
-          rating: "1",
-          label: "Abschluss"
+        technical: {
+          finishing: {
+            id: "finishing",
+            rating: "1",
+            label: "Abschluss"
+          },
+          firstTouch: {
+            id: "firstTouch",
+            rating: "1",
+            label: "Ballannahme"
+          },
+          marking: {
+            id: "marking",
+            rating: "1",
+            label: "Deckung"
+          },
+          dribbling: {
+            id: "dribbling",
+            rating: "1",
+            label: "Dribbling"
+          },
+          corners: {
+            id: "corners",
+            rating: "1",
+            label: "Ecken"
+          },
+          penaltyTaking: {
+            id: "penaltyTaking",
+            rating: "1",
+            label: "Elfmeter"
+          },
+          crossing: {
+            id: "crossing",
+            rating: "1",
+            label: "Flanken"
+          },
+          freeKickTaking: {
+            id: "freeKickTaking",
+            rating: "1",
+            label: "Freistöße"
+          },
+          heading: {
+            id: "heading",
+            rating: "1",
+            label: "Kopfballtechnik"
+          },
+          passing: {
+            id: "passing",
+            rating: "1",
+            label: "Passen"
+          },
+          tackling: {
+            id: "tackling",
+            rating: "1",
+            label: "Tackling"
+          },
+          technique: {
+            id: "technique",
+            rating: "1",
+            label: "Technik"
+          },
+          longThrows: {
+            id: "longThrows",
+            rating: "1",
+            label: "Weite Einwürfe"
+          },
+          longShots: {
+            id: "longShots",
+            rating: "1",
+            label: "Weitschüsse"
+          }
         },
-        firstTouch: {
-          id: "firstTouch",
-          rating: "1",
-          label: "Ballannahme"
+        mental: {
+          aggression: {
+            id: "aggression",
+            rating: "1",
+            label: "Aggressivität"
+          },
+          anticipation: {
+            id: "anticipation",
+            rating: "1",
+            label: "Antizipation"
+          },
+          workRate: {
+            id: "workRate",
+            rating: "1",
+            label: "Einsatzfreude"
+          },
+          decisions: {
+            id: "decisions",
+            rating: "1",
+            label: "Entscheidungen"
+          },
+          flair: {
+            id: "flair",
+            rating: "1",
+            label: "Flair"
+          },
+          leadership: {
+            id: "leadership",
+            rating: "1",
+            label: "Führungsqualitäten"
+          },
+          concentration: {
+            id: "concentration",
+            rating: "1",
+            label: "Konzentration"
+          },
+          bravery: {
+            id: "bravery",
+            rating: "1",
+            label: "Mut"
+          },
+          composure: {
+            id: "composure",
+            rating: "1",
+            label: "Nervenstärke"
+          },
+          offTheBall: {
+            id: "offTheBall",
+            rating: "1",
+            label: "Ohne Ball"
+          },
+          positioning: {
+            id: "positioning",
+            rating: "1",
+            label: "Stellungsspiel"
+          },
+          teamwork: {
+            id: "teamwork",
+            rating: "1",
+            label: "Teamwork"
+          },
+          vision: {
+            id: "vision",
+            rating: "1",
+            label: "Übersicht"
+          },
+          determination: {
+            id: "determination",
+            rating: "1",
+            label: "Zielstrebigkeit"
+          }
         },
-        marking: {
-          id: "marking",
-          rating: "1",
-          label: "Deckung"
-        },
-        dribbling: {
-          id: "dribbling",
-          rating: "1",
-          label: "Dribbling"
-        },
-        corners: {
-          id: "corners",
-          rating: "1",
-          label: "Ecken"
-        },
-        penaltyTaking: {
-          id: "penaltyTaking",
-          rating: "1",
-          label: "Elfmeter"
-        },
-        crossing: {
-          id: "crossing",
-          rating: "1",
-          label: "Flanken"
-        },
-        freeKickTaking: {
-          id: "freeKickTaking",
-          rating: "1",
-          label: "Freistöße"
-        },
-        heading: {
-          id: "heading",
-          rating: "1",
-          label: "Kopfballtechnik"
-        },
-        passing: {
-          id: "passing",
-          rating: "1",
-          label: "Passen"
-        },
-        tackling: {
-          id: "tackling",
-          rating: "1",
-          label: "Tackling"
-        },
-        technique: {
-          id: "technique",
-          rating: "1",
-          label: "Technik"
-        },
-        longThrows: {
-          id: "longThrows",
-          rating: "1",
-          label: "Weite Einwürfe"
-        },
-        longShots: {
-          id: "longShots",
-          rating: "1",
-          label: "Weitschüsse"
+        physical: {
+          acceleration: {
+            id: "acceleration",
+            rating: "1",
+            label: "Antritt"
+          },
+          stamina: {
+            id: "stamina",
+            rating: "1",
+            label: "Ausdauer"
+          },
+          balance: {
+            id: "technique",
+            rating: "1",
+            label: "Balance"
+          },
+          agility: {
+            id: "agility",
+            rating: "1",
+            label: "Beweglichkeit"
+          },
+          naturalFitness: {
+            id: "naturalFitness",
+            rating: "1",
+            label: "Grundfitness"
+          },
+          strength: {
+            id: "strength",
+            rating: "1",
+            label: "Kraft"
+          },
+          pace: {
+            id: "pace",
+            rating: "1",
+            label: "Schnelligkeit"
+          },
+          jumpingHeight: {
+            id: "jumpingHeight",
+            rating: "1",
+            label: "Sprunghöhe"
+          }
         }
       }
     };
@@ -109,7 +244,7 @@ export default {
       console.log(this.attributes);
     },
     updateValue(obj) {
-      this.attributes[obj.id].rating = obj.newRating;
+      this.attributes[obj.type][obj.id].rating = obj.newRating;
     }
   }
 };

@@ -12,6 +12,10 @@ export default {
     attribute: {
       type: Object,
       required: true
+    },
+    type: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -24,7 +28,11 @@ export default {
   },
   methods: {
     updateValue: function(newRating) {
-      this.$emit(this.attribute.id, { id: this.attribute.id, newRating });
+      this.$emit(this.attribute.id, {
+        id: this.attribute.id,
+        newRating,
+        type: this.type
+      });
     }
   }
 };
