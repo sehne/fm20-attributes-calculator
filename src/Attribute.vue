@@ -1,7 +1,11 @@
 <template>
   <div class="attribute">
     <div class="attribute-label">{{attribute.label}}</div>
-    <input v-bind:value="attribute.rating" v-on:input="updateValue($event.target.value)" />
+    <input
+      class="attribute-input"
+      v-bind:value="attribute.rating"
+      v-on:input="updateValue($event.target.value)"
+    />
   </div>
 </template>
 
@@ -40,15 +44,17 @@ export default {
 
 <style lang="scss">
 .attribute {
-  padding: 0 5px;
+  padding: 2px 20px 0 0;
   display: flex;
   flex-direction: row;
 
   .attribute-label {
-    width: 140px;
+    width: 150px;
+    border-bottom: 1px dotted white;
+    margin-right: 10px;
   }
   .attribute-input {
-    width: 100px;
+    width: 30px;
   }
 }
 </style>

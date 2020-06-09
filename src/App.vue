@@ -13,7 +13,7 @@
 
       <div class="attributes">
         <div class="attribute-list technical">
-          technical
+          Technical
           <div v-for="attributeKey in Object.keys(attributes.technical)" v-bind:key="attributeKey">
             <attribute
               type="technical"
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="attribute-list mental">
-          mental
+          Mental
           <div v-for="attributeKey in Object.keys(attributes.mental)" v-bind:key="attributeKey">
             <attribute
               type="mental"
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="attribute-list physical">
-          physical
+          Physical
           <div v-for="attributeKey in Object.keys(attributes.physical)" v-bind:key="attributeKey">
             <attribute
               type="physical"
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="attribute-list roles">
-          roles
+          Roles
           <div
             v-for="role in getRoles"
             v-bind:key="role.id"
@@ -295,7 +295,7 @@ export default {
     },
     parseText() {
       const ratingsArray = this.textToParse
-        .replace(/[^\d\s]/g, "")
+        .replace(/[^\d\s-]/g, "")
         .replace(/\s+/g, " ")
         .trim()
         .split(" ");
@@ -304,13 +304,34 @@ export default {
       const physicalKeys = Object.keys(this.attributes.physical);
 
       for (let i = 0; i < 14; i++) {
-        this.attributes.technical[technicalKeys[i]].rating = ratingsArray[i];
+        if (ratingsArray[i].includes("-")) {
+          const [min, max] = ratingsArray[i].split("-");
+          const rating = Math.floor((Number(min) + Number(max)) / 2);
+          this.attributes.technical[technicalKeys[i]].rating = rating;
+        } else {
+          this.attributes.technical[technicalKeys[i]].rating = ratingsArray[i];
+        }
       }
+
       for (let i = 14; i < 28; i++) {
-        this.attributes.mental[mentalKeys[i - 14]].rating = ratingsArray[i];
+        if (ratingsArray[i].includes("-")) {
+          const [min, max] = ratingsArray[i].split("-");
+          const rating = Math.floor((Number(min) + Number(max)) / 2);
+          this.attributes.mental[mentalKeys[i - 14]].rating = rating;
+        } else {
+          this.attributes.mental[mentalKeys[i - 14]].rating = ratingsArray[i];
+        }
       }
+
       for (let i = 28; i < 36; i++) {
-        this.attributes.physical[physicalKeys[i - 28]].rating = ratingsArray[i];
+        if (ratingsArray[i].includes("-")) {
+          const [min, max] = ratingsArray[i].split("-");
+          const rating = Math.floor((Number(min) + Number(max)) / 2);
+          this.attributes.physical[physicalKeys[i - 28]].rating = rating;
+        } else {
+          this.attributes.physical[physicalKeys[i - 28]].rating =
+            ratingsArray[i];
+        }
       }
     }
   }
@@ -340,19 +361,6 @@ body {
       display: flex;
       flex-direction: column;
     }
-  }
-}
-
-.attribute {
-  padding: 5px;
-  display: flex;
-  flex-direction: row;
-
-  .attribute-label {
-    width: 100px;
-  }
-  .attribute-input {
-    width: 100px;
   }
 }
 
