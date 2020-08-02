@@ -102,14 +102,14 @@
                 <div class="flex-column technical">
                   <div class="bold">Technical</div>
                   <div
-                    v-for="attributeKey in Object.keys(attributes.technical)"
+                    v-for="attributeKey in Object.keys(factors.technical)"
                     v-bind:key="attributeKey"
                   >
                     <attribute
                       type="technical"
                       v-bind:isFactor="true"
-                      v-bind:attribute="attributes.technical[attributeKey]"
-                      v-bind:label="attributes.technical[attributeKey].label"
+                      v-bind:attribute="factors.technical[attributeKey]"
+                      v-bind:label="factors.technical[attributeKey].label"
                       @[attributeKey]="updateValue"
                     />
                   </div>
@@ -117,14 +117,14 @@
                 <div class="flex-column mental">
                   <div class="bold">Mental</div>
                   <div
-                    v-for="attributeKey in Object.keys(attributes.mental)"
+                    v-for="attributeKey in Object.keys(factors.mental)"
                     v-bind:key="attributeKey"
                   >
                     <attribute
                       type="mental"
                       v-bind:isFactor="true"
-                      v-bind:attribute="attributes.mental[attributeKey]"
-                      v-bind:label="attributes.mental[attributeKey].label"
+                      v-bind:attribute="factors.mental[attributeKey]"
+                      v-bind:label="factors.mental[attributeKey].label"
                       @[attributeKey]="updateValue"
                     />
                   </div>
@@ -132,14 +132,14 @@
                 <div class="flex-column physical">
                   <div class="bold">Physical</div>
                   <div
-                    v-for="attributeKey in Object.keys(attributes.physical)"
+                    v-for="attributeKey in Object.keys(factors.physical)"
                     v-bind:key="attributeKey"
                   >
                     <attribute
                       type="physical"
                       v-bind:isFactor="true"
-                      v-bind:attribute="attributes.physical[attributeKey]"
-                      v-bind:label="attributes.physical[attributeKey].label"
+                      v-bind:attribute="factors.physical[attributeKey]"
+                      v-bind:label="factors.physical[attributeKey].label"
                       @[attributeKey]="updateValue"
                     />
                   </div>
@@ -163,13 +163,25 @@
                 </div>
               </div>
             </div>
+            <div class="add-player flex-row">
+              <div class="add-player-label">Name des Spielers</div>
+              <input class="add-player-input" v-model="playerName" />
+              <button class="add-player-button" @click="addPlayer()">add</button>
+            </div>
+            <div v-for="player in savedPlayers" v-bind:key="player.name">
+              <player
+                v-bind:player="player"
+                v-bind:getRoles="getRoles"
+                @playerSelected="playerSelected"
+              />
+            </div>
           </div>
           <div class="attribute-list roles">
-            Roles
+            <div class="bold">Roles</div>
             <div
-              v-for="role in getRoles"
+              v-for="role in getRoles(attributes)"
               v-bind:key="role.id"
-            >{{role.label}}: {{role.rating.toFixed(2)}}</div>
+            >{{role.rating.toFixed(2)}} - {{role.label}}</div>
           </div>
         </div>
       </div>
@@ -181,6 +193,9 @@
 
 <script>
 import roles from "./assets/roles";
+import attributesData from "./attributesData";
+import factorsData from "./factorsData";
+import _ from "lodash";
 
 export default {
   name: "app",
@@ -191,353 +206,27 @@ export default {
       importantAttributeFactor: 2,
       keyAttributeFactor: 3,
       currentAttributesTab: "values",
-      attributes: {
-        technical: {
-          finishing: {
-            id: "finishing",
-            rating: "10",
-            label: "Abschluss",
-            factor: "1"
-          },
-          firstTouch: {
-            id: "firstTouch",
-            rating: "10",
-            label: "Ballannahme",
-            factor: "1"
-          },
-          marking: {
-            id: "marking",
-            rating: "10",
-            label: "Deckung",
-            factor: "1"
-          },
-          dribbling: {
-            id: "dribbling",
-            rating: "10",
-            label: "Dribbling",
-            factor: "1"
-          },
-          corners: {
-            id: "corners",
-            rating: "10",
-            label: "Ecken",
-            factor: "0"
-          },
-          penaltyTaking: {
-            id: "penaltyTaking",
-            rating: "10",
-            label: "Elfmeter",
-            factor: "0"
-          },
-          crossing: {
-            id: "crossing",
-            rating: "10",
-            label: "Flanken",
-            factor: "1"
-          },
-          freeKickTaking: {
-            id: "freeKickTaking",
-            rating: "10",
-            label: "Freistöße",
-            factor: "0"
-          },
-          heading: {
-            id: "heading",
-            rating: "10",
-            label: "Kopfballtechnik",
-            factor: "1"
-          },
-          passing: {
-            id: "passing",
-            rating: "10",
-            label: "Passen",
-            factor: "1"
-          },
-          tackling: {
-            id: "tackling",
-            rating: "10",
-            label: "Tackling",
-            factor: "1"
-          },
-          technique: {
-            id: "technique",
-            rating: "10",
-            label: "Technik",
-            factor: "1"
-          },
-          longThrows: {
-            id: "longThrows",
-            rating: "10",
-            label: "Weite Einwürfe",
-            factor: "0"
-          },
-          longShots: {
-            id: "longShots",
-            rating: "10",
-            label: "Weitschüsse",
-            factor: "1"
-          }
-        },
-        mental: {
-          aggression: {
-            id: "aggression",
-            rating: "10",
-            label: "Aggressivität",
-            factor: "1"
-          },
-          anticipation: {
-            id: "anticipation",
-            rating: "10",
-            label: "Antizipation",
-            factor: "1"
-          },
-          workRate: {
-            id: "workRate",
-            rating: "10",
-            label: "Einsatzfreude",
-            factor: "1"
-          },
-          decisions: {
-            id: "decisions",
-            rating: "10",
-            label: "Entscheidungen",
-            factor: "1"
-          },
-          flair: {
-            id: "flair",
-            rating: "10",
-            label: "Flair",
-            factor: "1"
-          },
-          leadership: {
-            id: "leadership",
-            rating: "10",
-            label: "Führungsqualitäten",
-            factor: "0"
-          },
-          concentration: {
-            id: "concentration",
-            rating: "10",
-            label: "Konzentration",
-            factor: "1"
-          },
-          bravery: {
-            id: "bravery",
-            rating: "10",
-            label: "Mut",
-            factor: "1"
-          },
-          composure: {
-            id: "composure",
-            rating: "10",
-            label: "Nervenstärke",
-            factor: "1"
-          },
-          offTheBall: {
-            id: "offTheBall",
-            rating: "10",
-            label: "Ohne Ball",
-            factor: "1"
-          },
-          positioning: {
-            id: "positioning",
-            rating: "10",
-            label: "Stellungsspiel",
-            factor: "1"
-          },
-          teamwork: {
-            id: "teamwork",
-            rating: "10",
-            label: "Teamwork",
-            factor: "1"
-          },
-          vision: {
-            id: "vision",
-            rating: "10",
-            label: "Übersicht",
-            factor: "1"
-          },
-          determination: {
-            id: "determination",
-            rating: "10",
-            label: "Zielstrebigkeit",
-            factor: "0"
-          }
-        },
-        physical: {
-          acceleration: {
-            id: "acceleration",
-            rating: "10",
-            label: "Antritt",
-            factor: "1"
-          },
-          stamina: {
-            id: "stamina",
-            rating: "10",
-            label: "Ausdauer",
-            factor: "1"
-          },
-          balance: {
-            id: "balance",
-            rating: "10",
-            label: "Balance",
-            factor: "1"
-          },
-          agility: {
-            id: "agility",
-            rating: "10",
-            label: "Beweglichkeit",
-            factor: "1"
-          },
-          naturalFitness: {
-            id: "naturalFitness",
-            rating: "10",
-            label: "Grundfitness",
-            factor: "0"
-          },
-          strength: {
-            id: "strength",
-            rating: "10",
-            label: "Kraft",
-            factor: "1"
-          },
-          pace: {
-            id: "pace",
-            rating: "10",
-            label: "Schnelligkeit",
-            factor: "1"
-          },
-          jumpingHeight: {
-            id: "jumpingHeight",
-            rating: "10",
-            label: "Sprunghöhe",
-            factor: "1"
-          }
-        }
-      }
+      attributes: attributesData,
+      factors: factorsData,
+      playerName: "",
+      savedPlayers: []
     };
   },
-  computed: {
-    getRoles: function() {
-      console.log("getting Roles", this.attributes);
-      let myRoles = roles.map(r => {
-        let count = 0;
-        let value = 0;
-        for (let key in r.attributes.technical) {
-          switch (r.attributes.technical[key]) {
-            case 0: {
-              count +=
-                this.basicAttributeFactor *
-                this.attributes.technical[key].factor;
-              value +=
-                this.attributes.technical[key].rating *
-                this.basicAttributeFactor *
-                this.attributes.technical[key].factor;
-              break;
-            }
-            case 1: {
-              count +=
-                this.importantAttributeFactor *
-                this.attributes.technical[key].factor;
-              value +=
-                this.attributes.technical[key].rating *
-                this.importantAttributeFactor *
-                this.attributes.technical[key].factor;
-              break;
-            }
-            case 2: {
-              count +=
-                this.keyAttributeFactor * this.attributes.technical[key].factor;
-              value +=
-                this.attributes.technical[key].rating *
-                this.keyAttributeFactor *
-                this.attributes.technical[key].factor;
-              break;
-            }
-          }
-        }
-        for (let key in r.attributes.mental) {
-          switch (r.attributes.mental[key]) {
-            case 0: {
-              count +=
-                this.basicAttributeFactor * this.attributes.mental[key].factor;
-              value +=
-                this.attributes.mental[key].rating *
-                this.basicAttributeFactor *
-                this.attributes.mental[key].factor;
-              break;
-            }
-            case 1: {
-              count +=
-                this.importantAttributeFactor *
-                this.attributes.mental[key].factor;
-              value +=
-                this.attributes.mental[key].rating *
-                this.importantAttributeFactor *
-                this.attributes.mental[key].factor;
-              break;
-            }
-            case 2: {
-              count +=
-                this.keyAttributeFactor * this.attributes.mental[key].factor;
-              value +=
-                this.attributes.mental[key].rating *
-                this.keyAttributeFactor *
-                this.attributes.mental[key].factor;
-              break;
-            }
-          }
-        }
-        for (let key in r.attributes.physical) {
-          switch (r.attributes.physical[key]) {
-            case 0: {
-              count +=
-                this.basicAttributeFactor *
-                this.attributes.physical[key].factor;
-              value +=
-                this.attributes.physical[key].rating *
-                this.basicAttributeFactor *
-                this.attributes.physical[key].factor;
-              break;
-            }
-            case 1: {
-              count +=
-                this.importantAttributeFactor *
-                this.attributes.physical[key].factor;
-              value +=
-                this.attributes.physical[key].rating *
-                this.importantAttributeFactor *
-                this.attributes.physical[key].factor;
-              break;
-            }
-            case 2: {
-              count +=
-                this.keyAttributeFactor * this.attributes.physical[key].factor;
-              value +=
-                this.attributes.physical[key].rating *
-                this.keyAttributeFactor *
-                this.attributes.physical[key].factor;
-              break;
-            }
-          }
-        }
-        return { id: r.id, label: r.label, rating: value / count };
-      });
-      return myRoles.sort((a, b) => {
-        return b.rating - a.rating;
-      });
-    }
-  },
+  computed: {},
   methods: {
     log() {
       console.log("WORKS?");
-      console.log(this.attributes);
+      console.log(this.savedPlayers);
     },
     updateValue(obj) {
-      console.log("updating...", obj);
-      obj.isFactor
-        ? (this.attributes[obj.type][obj.id].factor = obj.newRating)
-        : (this.attributes[obj.type][obj.id].rating = obj.newRating);
+      console.log("update");
+      if (obj.isFactor) {
+        this.factors[obj.type][obj.id].factor = obj.newRating;
+      } else {
+        console.log("correct");
+        this.attributes[obj.type][obj.id].rating = obj.newRating;
+        this.unselectPlayer();
+      }
     },
     updateText(text) {
       this.textToParse = text;
@@ -585,6 +274,131 @@ export default {
             ratingsArray[i];
         }
       }
+    },
+    addPlayer() {
+      this.savedPlayers.push({
+        name: this.playerName,
+        attributes: JSON.parse(JSON.stringify(this.attributes)),
+        selected: false
+      });
+      this.playerName = "";
+    },
+    playerSelected(attributes) {
+      this.attributes = _.cloneDeep(attributes);
+      this.unselectPlayer();
+    },
+    unselectPlayer() {
+      for (let i = 0; i <= this.savedPlayers.length; i++) {
+        if (this.savedPlayers[i].selected) {
+          this.savedPlayers[i].selected = false;
+          break;
+        }
+      }
+    },
+    getRoles(attributes) {
+      let myRoles = roles.map(r => {
+        let count = 0;
+        let value = 0;
+        for (let key in r.attributes.technical) {
+          switch (r.attributes.technical[key]) {
+            case 0: {
+              count +=
+                this.basicAttributeFactor * this.factors.technical[key].factor;
+              value +=
+                attributes.technical[key].rating *
+                this.basicAttributeFactor *
+                this.factors.technical[key].factor;
+              break;
+            }
+            case 1: {
+              count +=
+                this.importantAttributeFactor *
+                this.factors.technical[key].factor;
+              value +=
+                attributes.technical[key].rating *
+                this.importantAttributeFactor *
+                this.factors.technical[key].factor;
+              break;
+            }
+            case 2: {
+              count +=
+                this.keyAttributeFactor * this.factors.technical[key].factor;
+              value +=
+                attributes.technical[key].rating *
+                this.keyAttributeFactor *
+                this.factors.technical[key].factor;
+              break;
+            }
+          }
+        }
+        for (let key in r.attributes.mental) {
+          switch (r.attributes.mental[key]) {
+            case 0: {
+              count +=
+                this.basicAttributeFactor * this.factors.mental[key].factor;
+              value +=
+                attributes.mental[key].rating *
+                this.basicAttributeFactor *
+                this.factors.mental[key].factor;
+              break;
+            }
+            case 1: {
+              count +=
+                this.importantAttributeFactor * this.factors.mental[key].factor;
+              value +=
+                attributes.mental[key].rating *
+                this.importantAttributeFactor *
+                this.factors.mental[key].factor;
+              break;
+            }
+            case 2: {
+              count +=
+                this.keyAttributeFactor * this.factors.mental[key].factor;
+              value +=
+                attributes.mental[key].rating *
+                this.keyAttributeFactor *
+                this.factors.mental[key].factor;
+              break;
+            }
+          }
+        }
+        for (let key in r.attributes.physical) {
+          switch (r.attributes.physical[key]) {
+            case 0: {
+              count +=
+                this.basicAttributeFactor * this.factors.physical[key].factor;
+              value +=
+                attributes.physical[key].rating *
+                this.basicAttributeFactor *
+                this.factors.physical[key].factor;
+              break;
+            }
+            case 1: {
+              count +=
+                this.importantAttributeFactor *
+                this.factors.physical[key].factor;
+              value +=
+                attributes.physical[key].rating *
+                this.importantAttributeFactor *
+                this.factors.physical[key].factor;
+              break;
+            }
+            case 2: {
+              count +=
+                this.keyAttributeFactor * this.factors.physical[key].factor;
+              value +=
+                attributes.physical[key].rating *
+                this.keyAttributeFactor *
+                this.factors.physical[key].factor;
+              break;
+            }
+          }
+        }
+        return { id: r.id, label: r.label, rating: value / count };
+      });
+      return myRoles.sort((a, b) => {
+        return b.rating - a.rating;
+      });
     }
   }
 };
@@ -687,5 +501,18 @@ body {
   height: 60px;
   width: 100%;
   max-width: 800px;
+}
+
+.add-player {
+  padding-top: 10px;
+
+  .add-player-label {
+    margin-right: 5px;
+  }
+  .add-player-input {
+    margin-right: 5px;
+  }
+  .add-player-button {
+  }
 }
 </style>

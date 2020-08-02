@@ -4,6 +4,7 @@ import App from './App.vue'
 // import ArrowUpBoldIcon from 'vue-material-design-icons/ArrowUpBold.vue';
 // import ArrowDownBoldIcon from 'vue-material-design-icons/ArrowDownBold.vue';
 import Attribute from './Attribute.vue'
+import Player from './Player.vue'
 
 Vue.config.productionTip = false
 
@@ -25,6 +26,7 @@ Vue.mixin({
 // Vue.component('arrow-up-bold-icon', ArrowUpBoldIcon);
 // Vue.component('arrow-down-bold-icon', ArrowDownBoldIcon);
 Vue.component('attribute', Attribute);
+Vue.component('player', Player);
 
 new Vue({
   render: h => h(App),
