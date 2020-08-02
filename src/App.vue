@@ -35,56 +35,135 @@
         <button @click="log()">log</button>
         <button @click="getValue()">get value</button>
 
-        <div class="attributes">
-          <div class="attribute-list technical">
-            Technical
-            <div
-              v-for="attributeKey in Object.keys(attributes.technical)"
-              v-bind:key="attributeKey"
-            >
-              <attribute
-                type="technical"
-                v-bind:attribute="attributes.technical[attributeKey]"
-                v-bind:label="attributes.technical[attributeKey].label"
-                @[attributeKey]="updateValue"
-              />
-            </div>
-          </div>
-          <div class="attribute-list mental">
-            Mental
-            <div v-for="attributeKey in Object.keys(attributes.mental)" v-bind:key="attributeKey">
-              <attribute
-                type="mental"
-                v-bind:attribute="attributes.mental[attributeKey]"
-                v-bind:label="attributes.mental[attributeKey].label"
-                @[attributeKey]="updateValue"
-              />
-            </div>
-          </div>
-          <div class="attribute-list physical">
-            Physical
-            <div v-for="attributeKey in Object.keys(attributes.physical)" v-bind:key="attributeKey">
-              <attribute
-                type="physical"
-                v-bind:attribute="attributes.physical[attributeKey]"
-                v-bind:label="attributes.physical[attributeKey].label"
-                @[attributeKey]="updateValue"
-              />
+        <div class="flex-row">
+          <div class="flex-column">
+            <div class="tabs attributeTabs">
+              <button
+                class="tablinks"
+                @click="switchAttributesTab('values')"
+                v-bind:class="{active : currentAttributesTab == 'values' }"
+              >Values</button>
+              <button
+                class="tablinks"
+                @click="switchAttributesTab('formula')"
+                v-bind:class="{active : currentAttributesTab == 'formula' }"
+              >Formula</button>
             </div>
 
-            <div style="margin-top: 60px">
-              <div class="attribute">
-                <div class="attribute-label">Wichtiges Attribut</div>
-                <input class="attribute-input" v-model.number="importantAttributeFactor" />
+            <div id="values" v-if="currentAttributesTab === 'values'">
+              <div class="flex-row">
+                <div class="flex-column technical">
+                  <div class="bold">Technical</div>
+                  <div
+                    v-for="attributeKey in Object.keys(attributes.technical)"
+                    v-bind:key="attributeKey"
+                  >
+                    <attribute
+                      type="technical"
+                      v-bind:attribute="attributes.technical[attributeKey]"
+                      v-bind:label="attributes.technical[attributeKey].label"
+                      @[attributeKey]="updateValue"
+                    />
+                  </div>
+                </div>
+                <div class="flex-column mental">
+                  <div class="bold">Mental</div>
+                  <div
+                    v-for="attributeKey in Object.keys(attributes.mental)"
+                    v-bind:key="attributeKey"
+                  >
+                    <attribute
+                      type="mental"
+                      v-bind:attribute="attributes.mental[attributeKey]"
+                      v-bind:label="attributes.mental[attributeKey].label"
+                      @[attributeKey]="updateValue"
+                    />
+                  </div>
+                </div>
+                <div class="flex-column physical">
+                  <div class="bold">Physical</div>
+                  <div
+                    v-for="attributeKey in Object.keys(attributes.physical)"
+                    v-bind:key="attributeKey"
+                  >
+                    <attribute
+                      type="physical"
+                      v-bind:attribute="attributes.physical[attributeKey]"
+                      v-bind:label="attributes.physical[attributeKey].label"
+                      @[attributeKey]="updateValue"
+                    />
+                  </div>
+                </div>
               </div>
+            </div>
 
-              <div class="attribute">
-                <div class="attribute-label">Schlüsselattribut</div>
-                <input class="attribute-input" v-model.number="keyAttributeFactor" />
+            <div id="formula" v-if="currentAttributesTab === 'formula'">
+              <div class="flex-row">
+                <div class="flex-column technical">
+                  <div class="bold">Technical</div>
+                  <div
+                    v-for="attributeKey in Object.keys(attributes.technical)"
+                    v-bind:key="attributeKey"
+                  >
+                    <attribute
+                      type="technical"
+                      v-bind:isFactor="true"
+                      v-bind:attribute="attributes.technical[attributeKey]"
+                      v-bind:label="attributes.technical[attributeKey].label"
+                      @[attributeKey]="updateValue"
+                    />
+                  </div>
+                </div>
+                <div class="flex-column mental">
+                  <div class="bold">Mental</div>
+                  <div
+                    v-for="attributeKey in Object.keys(attributes.mental)"
+                    v-bind:key="attributeKey"
+                  >
+                    <attribute
+                      type="mental"
+                      v-bind:isFactor="true"
+                      v-bind:attribute="attributes.mental[attributeKey]"
+                      v-bind:label="attributes.mental[attributeKey].label"
+                      @[attributeKey]="updateValue"
+                    />
+                  </div>
+                </div>
+                <div class="flex-column physical">
+                  <div class="bold">Physical</div>
+                  <div
+                    v-for="attributeKey in Object.keys(attributes.physical)"
+                    v-bind:key="attributeKey"
+                  >
+                    <attribute
+                      type="physical"
+                      v-bind:isFactor="true"
+                      v-bind:attribute="attributes.physical[attributeKey]"
+                      v-bind:label="attributes.physical[attributeKey].label"
+                      @[attributeKey]="updateValue"
+                    />
+                  </div>
+
+                  <div style="margin-top: 60px">
+                    <div class="attribute">
+                      <div class="attribute-label">Grundattribut</div>
+                      <input class="attribute-input" v-model.number="basicAttributeFactor" />
+                    </div>
+
+                    <div class="attribute">
+                      <div class="attribute-label">Wichtiges Attribut</div>
+                      <input class="attribute-input" v-model.number="importantAttributeFactor" />
+                    </div>
+
+                    <div class="attribute">
+                      <div class="attribute-label">Schlüsselattribut</div>
+                      <input class="attribute-input" v-model.number="keyAttributeFactor" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
           <div class="attribute-list roles">
             Roles
             <div
@@ -108,8 +187,10 @@ export default {
   data: () => {
     return {
       textToParse: "",
+      basicAttributeFactor: 0,
       importantAttributeFactor: 2,
       keyAttributeFactor: 3,
+      currentAttributesTab: "values",
       attributes: {
         technical: {
           finishing: {
@@ -338,25 +419,39 @@ export default {
   },
   computed: {
     getRoles: function() {
+      console.log("getting Roles", this.attributes);
       let myRoles = roles.map(r => {
         let count = 0;
         let value = 0;
         for (let key in r.attributes.technical) {
           switch (r.attributes.technical[key]) {
             case 0: {
+              count +=
+                this.basicAttributeFactor *
+                this.attributes.technical[key].factor;
+              value +=
+                this.attributes.technical[key].rating *
+                this.basicAttributeFactor *
+                this.attributes.technical[key].factor;
               break;
             }
             case 1: {
-              count += this.importantAttributeFactor;
+              count +=
+                this.importantAttributeFactor *
+                this.attributes.technical[key].factor;
               value +=
                 this.attributes.technical[key].rating *
-                this.importantAttributeFactor;
+                this.importantAttributeFactor *
+                this.attributes.technical[key].factor;
               break;
             }
             case 2: {
-              count += this.keyAttributeFactor;
+              count +=
+                this.keyAttributeFactor * this.attributes.technical[key].factor;
               value +=
-                this.attributes.technical[key].rating * this.keyAttributeFactor;
+                this.attributes.technical[key].rating *
+                this.keyAttributeFactor *
+                this.attributes.technical[key].factor;
               break;
             }
           }
@@ -364,19 +459,31 @@ export default {
         for (let key in r.attributes.mental) {
           switch (r.attributes.mental[key]) {
             case 0: {
+              count +=
+                this.basicAttributeFactor * this.attributes.mental[key].factor;
+              value +=
+                this.attributes.mental[key].rating *
+                this.basicAttributeFactor *
+                this.attributes.mental[key].factor;
               break;
             }
             case 1: {
-              count += this.importantAttributeFactor;
+              count +=
+                this.importantAttributeFactor *
+                this.attributes.mental[key].factor;
               value +=
                 this.attributes.mental[key].rating *
-                this.importantAttributeFactor;
+                this.importantAttributeFactor *
+                this.attributes.mental[key].factor;
               break;
             }
             case 2: {
-              count += this.keyAttributeFactor;
+              count +=
+                this.keyAttributeFactor * this.attributes.mental[key].factor;
               value +=
-                this.attributes.mental[key].rating * this.keyAttributeFactor;
+                this.attributes.mental[key].rating *
+                this.keyAttributeFactor *
+                this.attributes.mental[key].factor;
               break;
             }
           }
@@ -384,19 +491,32 @@ export default {
         for (let key in r.attributes.physical) {
           switch (r.attributes.physical[key]) {
             case 0: {
+              count +=
+                this.basicAttributeFactor *
+                this.attributes.physical[key].factor;
+              value +=
+                this.attributes.physical[key].rating *
+                this.basicAttributeFactor *
+                this.attributes.physical[key].factor;
               break;
             }
             case 1: {
-              count += this.importantAttributeFactor;
+              count +=
+                this.importantAttributeFactor *
+                this.attributes.physical[key].factor;
               value +=
                 this.attributes.physical[key].rating *
-                this.importantAttributeFactor;
+                this.importantAttributeFactor *
+                this.attributes.physical[key].factor;
               break;
             }
             case 2: {
-              count += this.keyAttributeFactor;
+              count +=
+                this.keyAttributeFactor * this.attributes.physical[key].factor;
               value +=
-                this.attributes.physical[key].rating * this.keyAttributeFactor;
+                this.attributes.physical[key].rating *
+                this.keyAttributeFactor *
+                this.attributes.physical[key].factor;
               break;
             }
           }
@@ -414,10 +534,16 @@ export default {
       console.log(this.attributes);
     },
     updateValue(obj) {
-      this.attributes[obj.type][obj.id].rating = obj.newRating;
+      console.log("updating...", obj);
+      obj.isFactor
+        ? (this.attributes[obj.type][obj.id].factor = obj.newRating)
+        : (this.attributes[obj.type][obj.id].rating = obj.newRating);
     },
     updateText(text) {
       this.textToParse = text;
+    },
+    switchAttributesTab(tab) {
+      this.currentAttributesTab = tab;
     },
     parseText() {
       const ratingsArray = this.textToParse
@@ -484,14 +610,14 @@ body {
     align-items: center;
   }
 
-  .attributes {
+  .flex-row {
     display: flex;
     flex-direction: row;
+  }
 
-    .attribute-list {
-      display: flex;
-      flex-direction: column;
-    }
+  .flex-column {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -543,6 +669,14 @@ body {
 .tablinks.active {
   color: rgba(255, 255, 255, 0.8);
   border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.attributeTabs {
+  margin-bottom: 10px;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .language-select {

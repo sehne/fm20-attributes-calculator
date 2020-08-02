@@ -3,7 +3,7 @@
     <div class="attribute-label">{{attribute.label}}</div>
     <input
       class="attribute-input"
-      v-bind:value="attribute.rating"
+      v-bind:value="isFactor ? attribute.factor :attribute.rating"
       v-on:input="updateValue($event.target.value)"
     />
   </div>
@@ -20,6 +20,10 @@ export default {
     type: {
       type: String,
       required: true
+    },
+    isFactor: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -35,7 +39,8 @@ export default {
       this.$emit(this.attribute.id, {
         id: this.attribute.id,
         newRating,
-        type: this.type
+        type: this.type,
+        isFactor: this.isFactor
       });
     }
   }
