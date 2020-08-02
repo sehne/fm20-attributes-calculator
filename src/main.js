@@ -11,10 +11,14 @@ Vue.config.productionTip = false
 Vue.mixin({
   data() {
     return {
+      currentTab: "single",
+      currentLanguage: "de",
     };
   },
   methods: {
-
+    switchTab(tab) {
+      this.currentTab = tab;
+    },
   }
 })
 
