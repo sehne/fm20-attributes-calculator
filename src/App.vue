@@ -33,7 +33,7 @@
 
         <button @click="parseText()">Parse</button>
         <button @click="log()">log</button>
-        <button @click="getValue()">get value</button>
+        <button @click="parseText2()">parse2</button>
 
         <div class="flex-row">
           <div class="flex-column">
@@ -216,14 +216,11 @@ export default {
   methods: {
     log() {
       console.log("WORKS?");
-      console.log(this.savedPlayers);
     },
     updateValue(obj) {
-      console.log("update");
       if (obj.isFactor) {
         this.factors[obj.type][obj.id].factor = obj.newRating;
       } else {
-        console.log("correct");
         this.attributes[obj.type][obj.id].rating = obj.newRating;
         this.unselectPlayer();
       }
@@ -240,17 +237,40 @@ export default {
         .replace(/\s+/g, " ")
         .trim()
         .split(" ");
-      const technicalKeys = Object.keys(this.attributes.technical);
-      const mentalKeys = Object.keys(this.attributes.mental);
-      const physicalKeys = Object.keys(this.attributes.physical);
+      this.attributes = this.getAttributeList(ratingsArray);
+    },
+    savePlayer(name, attributes) {
+      this.savedPlayers.push({
+        name,
+        attributes: JSON.parse(JSON.stringify(attributes)),
+        selected: false
+      });
+    },
+    parseText2() {
+      let arr = this.textToParse.split("|");
+      arr = arr.filter(e => !!e.replace(/-|\s/g, ""));
+      arr = arr.map(e => e.trim());
+      for (let i = 0; i < arr.length - 36; i += 37) {
+        this.savePlayer(
+          arr[i],
+          this.getAttributeList(arr.slice(i + 1, i + 37))
+        );
+      }
+    },
+    getAttributeList(ratingsArray) {
+      let attributeList = _.cloneDeep(attributesData);
+
+      const technicalKeys = Object.keys(attributeList.technical);
+      const mentalKeys = Object.keys(attributeList.mental);
+      const physicalKeys = Object.keys(attributeList.physical);
 
       for (let i = 0; i < 14; i++) {
         if (ratingsArray[i].includes("-")) {
           const [min, max] = ratingsArray[i].split("-");
           const rating = Math.floor((Number(min) + Number(max)) / 2);
-          this.attributes.technical[technicalKeys[i]].rating = rating;
+          attributeList.technical[technicalKeys[i]].rating = rating;
         } else {
-          this.attributes.technical[technicalKeys[i]].rating = ratingsArray[i];
+          attributeList.technical[technicalKeys[i]].rating = ratingsArray[i];
         }
       }
 
@@ -258,9 +278,9 @@ export default {
         if (ratingsArray[i].includes("-")) {
           const [min, max] = ratingsArray[i].split("-");
           const rating = Math.floor((Number(min) + Number(max)) / 2);
-          this.attributes.mental[mentalKeys[i - 14]].rating = rating;
+          attributeList.mental[mentalKeys[i - 14]].rating = rating;
         } else {
-          this.attributes.mental[mentalKeys[i - 14]].rating = ratingsArray[i];
+          attributeList.mental[mentalKeys[i - 14]].rating = ratingsArray[i];
         }
       }
 
@@ -268,19 +288,16 @@ export default {
         if (ratingsArray[i].includes("-")) {
           const [min, max] = ratingsArray[i].split("-");
           const rating = Math.floor((Number(min) + Number(max)) / 2);
-          this.attributes.physical[physicalKeys[i - 28]].rating = rating;
+          attributeList.physical[physicalKeys[i - 28]].rating = rating;
         } else {
-          this.attributes.physical[physicalKeys[i - 28]].rating =
-            ratingsArray[i];
+          attributeList.physical[physicalKeys[i - 28]].rating = ratingsArray[i];
         }
       }
+
+      return attributeList;
     },
     addPlayer() {
-      this.savedPlayers.push({
-        name: this.playerName,
-        attributes: JSON.parse(JSON.stringify(this.attributes)),
-        selected: false
-      });
+      this.savePlayer(this.playerName, _.cloneDeep(this.attributes));
       this.playerName = "";
     },
     playerSelected(attributes) {
