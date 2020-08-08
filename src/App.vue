@@ -32,9 +32,9 @@
         />
 
         <div class="parse-buttons">
-          <button class="pares-button" @click="parseText()">Parse from Image</button>
+          <button class="pares-button" @click="parseText()">Parse Attributes</button>
           <!-- <button class="pares-button" @click="log()">log</button> -->
-          <button class="pares-button" @click="parseText2()">Parse from .rtf</button>
+          <button class="pares-button" @click="parseText2()">Add Players from .rtf</button>
         </div>
         <div class="flex-row main-content">
           <div class="flex-column">
@@ -145,19 +145,20 @@
                     />
                   </div>
 
-                  <div style="margin-top: 60px">
+                  <div style="padding-top: 50px">
+                    <span class="bold">Role Multipliers:</span>
                     <div class="attribute">
-                      <div class="attribute-label">Grundattribut</div>
+                      <div class="attribute-label">Basic Attribute</div>
                       <input class="attribute-input" v-model.number="basicAttributeFactor" />
                     </div>
 
                     <div class="attribute">
-                      <div class="attribute-label">Wichtiges Attribut</div>
+                      <div class="attribute-label">Important Attribute</div>
                       <input class="attribute-input" v-model.number="importantAttributeFactor" />
                     </div>
 
                     <div class="attribute">
-                      <div class="attribute-label">Schlüsselattribut</div>
+                      <div class="attribute-label">Key Attribute</div>
                       <input class="attribute-input" v-model.number="keyAttributeFactor" />
                     </div>
                   </div>
@@ -165,7 +166,7 @@
               </div>
             </div>
             <div class="add-player flex-row">
-              <div class="add-player-label">Name des Spielers</div>
+              <div class="add-player-label">Player Name:</div>
               <input class="add-player-input" v-model="playerName" />
               <button class="add-player-button" @click="addPlayer()">add</button>
               <!-- <button class="add-player-button" @click="exportPlayers()">export</button> -->
@@ -563,8 +564,11 @@ body {
   max-width: 800px;
 }
 
-.pares-button {
-  margin-right: 10px;
+.parse-buttons {
+  padding: 10px;
+  .pares-button {
+    margin-right: 10px;
+  }
 }
 
 .add-player {
