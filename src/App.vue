@@ -31,11 +31,12 @@
           class="textarea"
         />
 
-        <button @click="parseText()">Parse</button>
-        <button @click="log()">log</button>
-        <button @click="parseText2()">parse2</button>
-
-        <div class="flex-row">
+        <div class="parse-buttons">
+          <button class="pares-button" @click="parseText()">Parse from Image</button>
+          <!-- <button class="pares-button" @click="log()">log</button> -->
+          <button class="pares-button" @click="parseText2()">Parse from .rtf</button>
+        </div>
+        <div class="flex-row main-content">
           <div class="flex-column">
             <div class="tabs attributeTabs">
               <button
@@ -171,13 +172,6 @@
               <button class="add-player-button" v-if="selectedPlayer" @click="deletePlayer()">delete</button>
               <button class="add-player-button" v-if="!selectedPlayer" @click="resetValues()">reset</button>
             </div>
-            <div v-for="player in savedPlayers" v-bind:key="player.name">
-              <player
-                v-bind:player="player"
-                v-bind:getRoles="getRoles"
-                @playerSelected="playerSelected"
-              />
-            </div>
           </div>
           <div class="attribute-list roles">
             <div class="bold">Roles</div>
@@ -185,6 +179,22 @@
               v-for="role in getRoles(attributes)"
               v-bind:key="role.id"
             >{{role.rating.toFixed(2)}} - {{role.label}}</div>
+          </div>
+        </div>
+        <hr style="width: 100%" />
+        <div class="player-list">
+          <div class="table-header">
+            <div class="table-name">Name</div>
+            <div class="table-rating">Rating</div>
+            <div class="table-roles">Roles</div>
+          </div>
+
+          <div v-for="player in savedPlayers" v-bind:key="player.name">
+            <player
+              v-bind:player="player"
+              v-bind:getRoles="getRoles"
+              @playerSelected="playerSelected"
+            />
           </div>
         </div>
       </div>
@@ -306,12 +316,11 @@ export default {
       this.playerName = "";
     },
     deletePlayer() {
-      console.log(this.selectedPlayer);
       let index = this.savedPlayers.indexOf(this.selectedPlayer);
-      console.log(this.savedPlayers, index);
       if (index !== -1) {
         this.savedPlayers.splice(index, 1);
         this.selectedPlayer = null;
+        this.playerName = "";
       }
     },
     resetValues() {
@@ -323,12 +332,14 @@ export default {
     playerSelected(player) {
       if (player.selected) {
         player.selected = false;
+        this.playerName = "";
         this.attributes = _.cloneDeep(this.attributes);
         this.selectedPlayer = null;
       } else {
         this.attributes = player.attributes;
         this.unselectPlayer();
         player.selected = true;
+        this.playerName = player.name;
         this.selectedPlayer = player;
       }
     },
@@ -460,13 +471,17 @@ body {
 .content {
   padding: 5px 10px;
   margin: auto;
-  max-width: 1600px;
+  max-width: 1080px;
 
   #home,
   #help {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .main-content {
+    height: 455px;
   }
 
   .flex-row {
@@ -548,16 +563,47 @@ body {
   max-width: 800px;
 }
 
+.pares-button {
+  margin-right: 10px;
+}
+
 .add-player {
-  padding-top: 10px;
+  padding-top: 20px;
 
   .add-player-label {
     margin-right: 5px;
   }
   .add-player-input {
-    margin-right: 5px;
   }
   .add-player-button {
+    margin: 0px 5px;
+  }
+}
+
+.roles {
+  overflow-y: scroll;
+}
+
+.player-list {
+  padding: 10px 0;
+  align-self: stretch;
+}
+
+.table-header {
+  flex-direction: row;
+  display: flex;
+  flex: 1;
+  font-weight: bold;
+  padding-bottom: 4px;
+
+  .table-name {
+    flex: 3;
+  }
+  .table-rating {
+    flex: 2;
+  }
+  .table-roles {
+    flex: 5;
   }
 }
 </style>

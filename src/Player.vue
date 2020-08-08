@@ -5,7 +5,7 @@
     @click="playerSelected()"
   >
     <div class="player-name">{{player.name}}</div>
-    <div>{{getBestRating()}}</div>
+    <div class="player-rating">{{getBestRating()}}</div>
     <div class="player-roles">
       <div v-for="role in getTopFourRoles()" v-bind:key="role.id">
         <div class="player-role">{{role.rating.toFixed(2)}} - {{role.label}}</div>
@@ -58,21 +58,26 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 2px 0;
+  margin: 4px 0;
+  padding: 4px 0 2px;
+  border-top: white 1px solid;
 
   .player-name {
-    width: 160px;
+    flex: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .player-rating {
+    flex: 2;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   .player-roles {
+    flex: 5;
     font-size: 14px;
     line-height: 16px;
-    width: 300px;
-
-    //   display: flex;
-    //   flex-direction: "column";
 
     .player-role {
       overflow: hidden;
