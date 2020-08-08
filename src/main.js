@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 Vue.mixin({
   data() {
     return {
-      currentTab: "single",
+      currentTab: "home",
       currentLanguage: "de",
     };
   },

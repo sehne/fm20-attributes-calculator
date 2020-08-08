@@ -6,14 +6,14 @@
       <div class="tabs">
         <button
           class="tablinks"
-          @click="switchTab('single')"
-          v-bind:class="{active : currentTab == 'single' }"
-        >Single</button>
+          @click="switchTab('home')"
+          v-bind:class="{active : currentTab == 'home' }"
+        >Home</button>
         <button
           class="tablinks"
-          @click="switchTab('multiple')"
-          v-bind:class="{active : currentTab == 'multiple' }"
-        >Multiple</button>
+          @click="switchTab('help')"
+          v-bind:class="{active : currentTab == 'help' }"
+        >Help</button>
       </div>
 
       <select v-model="currentLanguage" class="language-select">
@@ -23,7 +23,7 @@
     </div>
 
     <div class="content">
-      <div id="single" v-if="currentTab === 'single'">
+      <div id="home" v-if="currentTab === 'home'">
         <textarea
           v-bind:value="textToParse"
           v-on:input="updateText($event.target.value)"
@@ -167,6 +167,9 @@
               <div class="add-player-label">Name des Spielers</div>
               <input class="add-player-input" v-model="playerName" />
               <button class="add-player-button" @click="addPlayer()">add</button>
+              <!-- <button class="add-player-button" @click="exportPlayers()">export</button> -->
+              <button class="add-player-button" v-if="selectedPlayer" @click="deletePlayer()">delete</button>
+              <button class="add-player-button" v-if="!selectedPlayer" @click="resetValues()">reset</button>
             </div>
             <div v-for="player in savedPlayers" v-bind:key="player.name">
               <player
@@ -186,7 +189,7 @@
         </div>
       </div>
 
-      <div id="multiple" v-if="currentTab === 'multiple'"></div>
+      <div id="help" v-if="currentTab === 'help'"></div>
     </div>
   </div>
 </template>
@@ -206,10 +209,11 @@ export default {
       importantAttributeFactor: 2,
       keyAttributeFactor: 3,
       currentAttributesTab: "values",
-      attributes: attributesData,
+      attributes: _.cloneDeep(attributesData),
       factors: factorsData,
       playerName: "",
-      savedPlayers: []
+      savedPlayers: [],
+      selectedPlayer: null
     };
   },
   computed: {},
@@ -222,7 +226,6 @@ export default {
         this.factors[obj.type][obj.id].factor = obj.newRating;
       } else {
         this.attributes[obj.type][obj.id].rating = obj.newRating;
-        this.unselectPlayer();
       }
     },
     updateText(text) {
@@ -297,15 +300,40 @@ export default {
       return attributeList;
     },
     addPlayer() {
-      this.savePlayer(this.playerName, _.cloneDeep(this.attributes));
+      let name = this.playerName;
+      if (!name) name = `Player ${this.savedPlayers.length + 1}`;
+      this.savePlayer(name, _.cloneDeep(this.attributes));
       this.playerName = "";
     },
-    playerSelected(attributes) {
-      this.attributes = _.cloneDeep(attributes);
-      this.unselectPlayer();
+    deletePlayer() {
+      console.log(this.selectedPlayer);
+      let index = this.savedPlayers.indexOf(this.selectedPlayer);
+      console.log(this.savedPlayers, index);
+      if (index !== -1) {
+        this.savedPlayers.splice(index, 1);
+        this.selectedPlayer = null;
+      }
+    },
+    resetValues() {
+      this.attributes = _.cloneDeep(attributesData);
+    },
+    exportPlayers() {
+      // TODO create Text that can be used to import players again
+    },
+    playerSelected(player) {
+      if (player.selected) {
+        player.selected = false;
+        this.attributes = _.cloneDeep(this.attributes);
+        this.selectedPlayer = null;
+      } else {
+        this.attributes = player.attributes;
+        this.unselectPlayer();
+        player.selected = true;
+        this.selectedPlayer = player;
+      }
     },
     unselectPlayer() {
-      for (let i = 0; i <= this.savedPlayers.length; i++) {
+      for (let i = 0; i < this.savedPlayers.length; i++) {
         if (this.savedPlayers[i].selected) {
           this.savedPlayers[i].selected = false;
           break;
@@ -434,8 +462,8 @@ body {
   margin: auto;
   max-width: 1600px;
 
-  #single,
-  #multiple {
+  #home,
+  #help {
     display: flex;
     flex-direction: column;
     align-items: center;

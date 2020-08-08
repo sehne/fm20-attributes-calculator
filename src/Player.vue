@@ -7,11 +7,8 @@
     <div class="player-name">{{player.name}}</div>
     <div>{{getBestRating()}}</div>
     <div class="player-roles">
-      <div v-for="role in getTopFiveRoles()" v-bind:key="role.id">
-        <div class="player-role">
-          <span class="bold">{{role.rating.toFixed(2)}}</span>
-          - {{role.label}}
-        </div>
+      <div v-for="role in getTopFourRoles()" v-bind:key="role.id">
+        <div class="player-role">{{role.rating.toFixed(2)}} - {{role.label}}</div>
       </div>
     </div>
   </div>
@@ -40,8 +37,8 @@ export default {
     // console.log(this.$props.getRoles(this.$props.player.attributes));
   },
   methods: {
-    getTopFiveRoles() {
-      return this.getRoles(this.player.attributes).slice(0, 5);
+    getTopFourRoles() {
+      return this.getRoles(this.player.attributes).slice(0, 4);
     },
     getBestRating() {
       return this.getRoles(this.player.attributes)
@@ -49,8 +46,7 @@ export default {
         .rating.toFixed(2);
     },
     playerSelected() {
-      this.$emit("playerSelected", this.player.attributes);
-      this.player.selected = true;
+      this.$emit("playerSelected", this.player);
     }
   }
 };
@@ -71,8 +67,8 @@ export default {
   }
 
   .player-roles {
-    font-size: 12px;
-    line-height: 12px;
+    font-size: 14px;
+    line-height: 16px;
     width: 300px;
 
     //   display: flex;
