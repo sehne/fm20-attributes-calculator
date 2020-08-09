@@ -179,8 +179,8 @@ const attributes = {
             rating: "10",
             label: "Schnelligkeit",
         },
-        jumpingHeight: {
-            id: "jumpingHeight",
+        jumpingReach: {
+            id: "jumpingReach",
             rating: "10",
             label: "Sprunghöhe",
         }

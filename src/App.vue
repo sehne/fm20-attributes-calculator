@@ -16,7 +16,7 @@
         >Help</button>
       </div>
 
-      <select v-model="currentLanguage" class="language-select">
+      <select v-model="currentLanguage" class="language-select" @change="loadNewLanguage($event)">
         <option value="de">de</option>
         <option value="en">en</option>
       </select>
@@ -33,7 +33,7 @@
 
         <div class="parse-buttons">
           <button class="pares-button" @click="parseText()">Parse Attributes</button>
-          <!-- <button class="pares-button" @click="log()">log</button> -->
+          <button class="pares-button" @click="log()">log</button>
           <button class="pares-button" @click="parseText2()">Add Players from .rtf</button>
         </div>
         <div class="flex-row main-content">
@@ -56,7 +56,7 @@
                 <div class="flex-column technical">
                   <div class="bold">Technical</div>
                   <div
-                    v-for="attributeKey in Object.keys(attributes.technical)"
+                    v-for="attributeKey of this.getAttributeKeys('technical')"
                     v-bind:key="attributeKey"
                   >
                     <attribute
@@ -64,13 +64,14 @@
                       v-bind:attribute="attributes.technical[attributeKey]"
                       v-bind:label="attributes.technical[attributeKey].label"
                       @[attributeKey]="updateValue"
+                      v-bind:translations="translations"
                     />
                   </div>
                 </div>
                 <div class="flex-column mental">
                   <div class="bold">Mental</div>
                   <div
-                    v-for="attributeKey in Object.keys(attributes.mental)"
+                    v-for="attributeKey of this.getAttributeKeys('mental')"
                     v-bind:key="attributeKey"
                   >
                     <attribute
@@ -78,13 +79,14 @@
                       v-bind:attribute="attributes.mental[attributeKey]"
                       v-bind:label="attributes.mental[attributeKey].label"
                       @[attributeKey]="updateValue"
+                      v-bind:translations="translations"
                     />
                   </div>
                 </div>
                 <div class="flex-column physical">
                   <div class="bold">Physical</div>
                   <div
-                    v-for="attributeKey in Object.keys(attributes.physical)"
+                    v-for="attributeKey of this.getAttributeKeys('physical')"
                     v-bind:key="attributeKey"
                   >
                     <attribute
@@ -92,6 +94,7 @@
                       v-bind:attribute="attributes.physical[attributeKey]"
                       v-bind:label="attributes.physical[attributeKey].label"
                       @[attributeKey]="updateValue"
+                      v-bind:translations="translations"
                     />
                   </div>
                 </div>
@@ -103,7 +106,7 @@
                 <div class="flex-column technical">
                   <div class="bold">Technical</div>
                   <div
-                    v-for="attributeKey in Object.keys(factors.technical)"
+                    v-for="attributeKey of this.getAttributeKeys('technical')"
                     v-bind:key="attributeKey"
                   >
                     <attribute
@@ -111,6 +114,7 @@
                       v-bind:isFactor="true"
                       v-bind:attribute="factors.technical[attributeKey]"
                       v-bind:label="factors.technical[attributeKey].label"
+                      v-bind:translations="translations"
                       @[attributeKey]="updateValue"
                     />
                   </div>
@@ -118,7 +122,7 @@
                 <div class="flex-column mental">
                   <div class="bold">Mental</div>
                   <div
-                    v-for="attributeKey in Object.keys(factors.mental)"
+                    v-for="attributeKey of this.getAttributeKeys('mental')"
                     v-bind:key="attributeKey"
                   >
                     <attribute
@@ -126,6 +130,7 @@
                       v-bind:isFactor="true"
                       v-bind:attribute="factors.mental[attributeKey]"
                       v-bind:label="factors.mental[attributeKey].label"
+                      v-bind:translations="translations"
                       @[attributeKey]="updateValue"
                     />
                   </div>
@@ -133,7 +138,7 @@
                 <div class="flex-column physical">
                   <div class="bold">Physical</div>
                   <div
-                    v-for="attributeKey in Object.keys(factors.physical)"
+                    v-for="attributeKey of this.getAttributeKeys('physical')"
                     v-bind:key="attributeKey"
                   >
                     <attribute
@@ -141,6 +146,7 @@
                       v-bind:isFactor="true"
                       v-bind:attribute="factors.physical[attributeKey]"
                       v-bind:label="factors.physical[attributeKey].label"
+                      v-bind:translations="translations"
                       @[attributeKey]="updateValue"
                     />
                   </div>
@@ -230,7 +236,7 @@ export default {
   computed: {},
   methods: {
     log() {
-      console.log("WORKS?");
+      this.getAttributeKeys("technical");
     },
     updateValue(obj) {
       if (obj.isFactor) {
@@ -274,9 +280,9 @@ export default {
     getAttributeList(ratingsArray) {
       let attributeList = _.cloneDeep(attributesData);
 
-      const technicalKeys = Object.keys(attributeList.technical);
-      const mentalKeys = Object.keys(attributeList.mental);
-      const physicalKeys = Object.keys(attributeList.physical);
+      const technicalKeys = this.getAttributeKeys("technical");
+      const mentalKeys = this.getAttributeKeys("mental");
+      const physicalKeys = this.getAttributeKeys("physical");
 
       for (let i = 0; i < 14; i++) {
         if (ratingsArray[i].includes("-")) {
@@ -351,6 +357,19 @@ export default {
           break;
         }
       }
+    },
+    getAttributeKeys(type) {
+      let keysValueParis = Object.entries(
+        this.translations.attributes[type]
+      ).sort(this.sortByValue);
+      let keys = [];
+      for (let pair of keysValueParis) {
+        keys.push(pair[0]);
+      }
+      return keys;
+    },
+    sortByValue(x, y) {
+      return x[1].localeCompare(y[1]);
     },
     getRoles(attributes) {
       let myRoles = roles.map(r => {

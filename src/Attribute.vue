@@ -1,6 +1,6 @@
 <template>
   <div class="attribute">
-    <div class="attribute-label">{{attribute.label}}</div>
+    <div class="attribute-label">{{translations.attributes[type][attribute.id]}}</div>
     <input
       class="attribute-input"
       v-bind:value="isFactor ? attribute.factor :attribute.rating"
@@ -24,6 +24,10 @@ export default {
     isFactor: {
       type: Boolean,
       default: false
+    },
+    translations: {
+      type: Object,
+      required: true
     }
   },
   data() {
@@ -31,11 +35,10 @@ export default {
       // label: this.attribute.label
     };
   },
-  mounted() {
-    // console.log(this.$props);
-  },
+  mounted() {},
   methods: {
     updateValue: function(newRating) {
+      console.log(this.currentLanguage, this.translations);
       this.$emit(this.attribute.id, {
         id: this.attribute.id,
         newRating,

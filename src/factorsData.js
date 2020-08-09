@@ -179,8 +179,8 @@ const factors = {
             label: "Schnelligkeit",
             factor: "1"
         },
-        jumpingHeight: {
-            id: "jumpingHeight",
+        jumpingReach: {
+            id: "jumpingReach",
             label: "Sprunghöhe",
             factor: "1"
         }

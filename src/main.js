@@ -13,13 +13,18 @@ Vue.mixin({
   data() {
     return {
       currentTab: "home",
-      currentLanguage: "de",
+      currentLanguage: "en",
+      translations: require('./assets/languages/en.json')
     };
   },
   methods: {
     switchTab(tab) {
       this.currentTab = tab;
     },
+    loadNewLanguage() {
+      this.translations = require(`./assets/languages/${this.currentLanguage}.json`);
+      // this.$forceUpdate();
+    }
   }
 })
 

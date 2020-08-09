@@ -1,0 +1,46 @@
+{
+    "attributes": {
+        "technical": {
+            "corners": "Ecken",
+            "crossing": "Flanken",
+            "dribbling": "Dribbling",
+            "finishing": "Abschluss",
+            "firstTouch": "Ballannahme",
+            "freeKickTaking": "Freistöße",
+            "heading": "Kopfballtechnik",
+            "longShots": "Weitschüsse",
+            "longThrows": "Weite Einwürfe",
+            "marking": "Deckung",
+            "passing": "Passen",
+            "penaltyTaking": "Elfmeter",
+            "tackling": "Tackling",
+            "technique": "Technik"
+        },
+        "mental": {
+            "aggression": "Aggressivität",
+            "anticipation": "Antizipation",
+            "bravery": "Mut",
+            "composure": "Nervenstärke",
+            "concentration": "Konzentration",
+            "decisions": "Entscheidungen",
+            "determination": "Zielstrebigkeit",
+            "flair": "Flair",
+            "leadership": "Führungsqualitäten",
+            "offTheBall": "Ohne Ball",
+            "positioning": "Stellungsspiel",
+            "teamwork": "Teamwork",
+            "vision": "Übersicht",
+            "workRate": "Einsatzfreude"
+        },
+        "physical": {
+            "acceleration": "Antritt",
+            "agility": "Beweglichkeit",
+            "balance": "Balance",
+            "jumpingReach": "Sprunghöhe",
+            "naturalFitness": "Grundfitness",
+            "pace": "Schnelligkeit",
+            "strength": "Kraft",
+            "stamina": "Ausdauer"
+        }
+    }
+}

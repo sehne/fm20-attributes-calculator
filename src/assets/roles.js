@@ -45,7 +45,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -93,7 +93,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -141,7 +141,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -189,7 +189,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 1,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },
@@ -237,7 +237,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 0,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },
@@ -286,7 +286,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 1,
+                jumpingReach: 1,
             }
         }
     },
@@ -334,7 +334,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -382,7 +382,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -430,7 +430,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -478,7 +478,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 1,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },
@@ -526,7 +526,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 0,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },
@@ -574,7 +574,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 1,
+                jumpingReach: 1,
             }
         }
     },
@@ -622,7 +622,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -670,7 +670,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -718,7 +718,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -766,7 +766,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -814,7 +814,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -862,7 +862,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -910,7 +910,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 1,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },
@@ -958,7 +958,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 0,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },
@@ -1006,7 +1006,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 1,
+                jumpingReach: 1,
             }
         }
     },
@@ -1054,7 +1054,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 1,
+                jumpingReach: 1,
             }
         }
     },
@@ -1102,7 +1102,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 1,
+                jumpingReach: 1,
             }
         }
     },
@@ -1152,7 +1152,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1200,7 +1200,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1248,7 +1248,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1296,7 +1296,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1344,7 +1344,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1392,7 +1392,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1440,7 +1440,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 0,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },
@@ -1488,7 +1488,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 0,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },
@@ -1536,7 +1536,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1584,7 +1584,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1632,7 +1632,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1680,7 +1680,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1728,7 +1728,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1776,7 +1776,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1824,7 +1824,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1872,7 +1872,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1920,7 +1920,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -1968,7 +1968,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2016,7 +2016,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2064,7 +2064,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2112,7 +2112,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2160,7 +2160,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2208,7 +2208,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2256,7 +2256,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2304,7 +2304,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2352,7 +2352,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2400,7 +2400,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2448,7 +2448,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2496,7 +2496,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2544,7 +2544,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2592,7 +2592,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 0,
-                jumpingHeight: 1,
+                jumpingReach: 1,
             }
         }
     },
@@ -2640,7 +2640,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2688,7 +2688,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2736,7 +2736,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2784,7 +2784,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2832,7 +2832,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2880,7 +2880,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2928,7 +2928,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -2976,7 +2976,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3026,7 +3026,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3074,7 +3074,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3122,7 +3122,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3170,7 +3170,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3218,7 +3218,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 1,
-                jumpingHeight: 1,
+                jumpingReach: 1,
             }
         }
     },
@@ -3266,7 +3266,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 1,
-                jumpingHeight: 1,
+                jumpingReach: 1,
             }
         }
     },
@@ -3314,7 +3314,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3362,7 +3362,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3410,7 +3410,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 1,
                 pace: 2,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3458,7 +3458,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 1,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3506,7 +3506,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 0,
                 pace: 0,
-                jumpingHeight: 0,
+                jumpingReach: 0,
             }
         }
     },
@@ -3554,7 +3554,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 0,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },
@@ -3602,7 +3602,7 @@ const roles = [
                 naturalFitness: 0,
                 strength: 2,
                 pace: 0,
-                jumpingHeight: 2,
+                jumpingReach: 2,
             }
         }
     },

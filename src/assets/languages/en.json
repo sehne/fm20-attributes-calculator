@@ -1,0 +1,46 @@
+{
+    "attributes": {
+        "technical": {
+            "corners": "Corners",
+            "crossing": "Crossing",
+            "dribbling": "Dribbling",
+            "finishing": "Finishing",
+            "firstTouch": "First Touch",
+            "freeKickTaking": "Free Kick Taking",
+            "heading": "Heading",
+            "longShots": "Long Shots",
+            "longThrows": "Long Throws",
+            "marking": "Marking",
+            "passing": "Passing",
+            "penaltyTaking": "Penalty Taking",
+            "tackling": "Tackling",
+            "technique": "Technique"
+        },
+        "mental": {
+            "aggression": "Aggression",
+            "anticipation": "Anticipation",
+            "bravery": "Bravery",
+            "composure": "Composure",
+            "concentration": "Concentration",
+            "decisions": "Decisions",
+            "determination": "Determination",
+            "flair": "Flair",
+            "leadership": "Leadership",
+            "offTheBall": "Off The Ball",
+            "positioning": "Positioning",
+            "teamwork": "Teamwork",
+            "vision": "Vision",
+            "workRate": "Work Rate"
+        },
+        "physical": {
+            "acceleration": "Acceleration",
+            "agility": "Agility",
+            "balance": "Balance",
+            "jumpingReach": "Jumping Reach",
+            "naturalFitness": "Natural Fitness",
+            "pace": "Pace",
+            "strength": "Strength",
+            "stamina": "Stamina"
+        }
+    }
+}
