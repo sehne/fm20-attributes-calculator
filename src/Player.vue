@@ -8,7 +8,7 @@
     <div class="player-rating">{{getBestRating()}}</div>
     <div class="player-roles">
       <div v-for="role in getTopFourRoles()" v-bind:key="role.id">
-        <div class="player-role">{{role.rating.toFixed(2)}} - {{role.label}}</div>
+        <div class="player-role">{{role.rating.toFixed(2)}} - {{translations.roles[role.id]}}</div>
       </div>
     </div>
   </div>
@@ -24,6 +24,10 @@ export default {
     },
     getRoles: {
       type: Function,
+      required: true
+    },
+    translations: {
+      type: Object,
       required: true
     }
   },

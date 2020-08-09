@@ -3,6 +3,12 @@
     <div class="header">
       <div class="app-name">FM20 Attributes Calculator</div>
 
+      <!-- TODO LIST: -->
+      <!-- Export players -->
+      <!-- Help page -->
+      <!-- Role complexity -->
+      <!-- parse player improvement/refactoring -->
+
       <div class="tabs">
         <button
           class="tablinks"
@@ -185,7 +191,7 @@
             <div
               v-for="role in getRoles(attributes)"
               v-bind:key="role.id"
-            >{{role.rating.toFixed(2)}} - {{role.label}}</div>
+            >{{role.rating.toFixed(2)}} - {{translations.roles[role.id]}}</div>
           </div>
         </div>
         <hr style="width: 100%" />
@@ -200,6 +206,7 @@
             <player
               v-bind:player="player"
               v-bind:getRoles="getRoles"
+              v-bind:translations="translations"
               @playerSelected="playerSelected"
             />
           </div>
@@ -605,6 +612,7 @@ body {
 
 .roles {
   overflow-y: scroll;
+  padding-right: 10px;
 }
 
 .player-list {

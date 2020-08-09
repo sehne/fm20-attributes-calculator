@@ -2,8 +2,8 @@ const roles = [
 
     // Defenders
     {
+        // label: "Außenverteidiger (Verteidigen)",
         id: "r1",
-        label: "Außenverteidiger (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -50,8 +50,8 @@ const roles = [
         }
     },
     {
+        // label: "Außenverteidiger (Unterstützen)",
         id: "r2",
-        label: "Außenverteidiger (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -98,8 +98,8 @@ const roles = [
         }
     },
     {
+        // label: "Außenverteidiger (Angreifen)",
         id: "r3",
-        label: "Außenverteidiger (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -146,8 +146,8 @@ const roles = [
         }
     },
     {
+        // label: "Ballspielender Verteidiger (Verteidigen)",
         id: "r4",
-        label: "Ballspielender Verteidiger (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -194,8 +194,8 @@ const roles = [
         }
     },
     {
+        // label: "Ballspielender Verteidiger (Vorstopper)",
         id: "r5",
-        label: "Ballspielender Verteidiger (Vorstopper)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -243,8 +243,8 @@ const roles = [
     },
 
     {
+        // label: "Ballspielender Verteidiger (Rückendeckend)",
         id: "r6",
-        label: "Ballspielender Verteidiger (Rückendeckend)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -291,8 +291,8 @@ const roles = [
         }
     },
     {
+        // label: "Flügelverteidiger (Verteidigen)",
         id: "r7",
-        label: "Flügelverteidiger (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -339,8 +339,8 @@ const roles = [
         }
     },
     {
+        // label: "Flügelverteidiger (Unterstützend)",
         id: "r8",
-        label: "Flügelverteidiger (Unterstützend)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -387,8 +387,8 @@ const roles = [
         }
     },
     {
+        // label: "Flügelverteidiger (Angreifend)",
         id: "r9",
-        label: "Flügelverteidiger (Angreifend)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -435,8 +435,8 @@ const roles = [
         }
     },
     {
+        // label: "Innenverteidiger (Verteidigen)",
         id: "r10",
-        label: "Innenverteidiger (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -483,8 +483,8 @@ const roles = [
         }
     },
     {
+        // label: "Innenverteidiger (Vorstopper)",
         id: "r11",
-        label: "Innenverteidiger (Vorstopper)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -531,8 +531,8 @@ const roles = [
         }
     },
     {
+        // label: "Innenverteidiger (Rückendecken)",
         id: "r12",
-        label: "Innenverteidiger (Rückendecken)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -579,8 +579,8 @@ const roles = [
         }
     },
     {
+        // label: "Inverser Außenverteidiger (Verteidigen)",
         id: "r13",
-        label: "Inverser Außenverteidiger (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -627,8 +627,8 @@ const roles = [
         }
     },
     {
+        // label: "Inverser Außenverteidiger (Unterstützen)",
         id: "r14",
-        label: "Inverser Außenverteidiger (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -675,8 +675,8 @@ const roles = [
         }
     },
     {
+        // label: "Inverser Außenverteidiger (Angreifen)",
         id: "r15",
-        label: "Inverser Außenverteidiger (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -723,8 +723,8 @@ const roles = [
         }
     },
     {
+        // label: "Kompletter Flügelverteidiger (Unterstützend)",
         id: "r16",
-        label: "Kompletter Flügelverteidiger (Unterstützend)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -771,8 +771,8 @@ const roles = [
         }
     },
     {
+        // label: "Kompletter Flügelverteidiger (Angreifen)",
         id: "r17",
-        label: "Kompletter Flügelverteidiger (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -819,8 +819,8 @@ const roles = [
         }
     },
     {
+        // label: "Kompromissloser Außenverteidiger (Verteidigen)",
         id: "r18",
-        label: "Kompromissloser Außenverteidiger (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -867,8 +867,8 @@ const roles = [
         }
     },
     {
+        // label: "Kompromissloser Innenverteidiger (Verteidigen)",
         id: "r19",
-        label: "Kompromissloser Innenverteidiger (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -915,8 +915,8 @@ const roles = [
         }
     },
     {
+        // label: "Kompromissloser Innenverteidiger (Vorstopper)",
         id: "r20",
-        label: "Kompromissloser Innenverteidiger (Vorstopper)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -963,8 +963,8 @@ const roles = [
         }
     },
     {
+        // label: "Kompromissloser Innenverteidiger (Rückendeckung)",
         id: "r21",
-        label: "Kompromissloser Innenverteidiger (Rückendeckung)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1011,8 +1011,8 @@ const roles = [
         }
     },
     {
+        // label: "Libero (Unterstützend)",
         id: "r22",
-        label: "Libero (Unterstützend)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1059,8 +1059,8 @@ const roles = [
         }
     },
     {
+        // label: "Libero (Angreifen)",
         id: "r23",
-        label: "Libero (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1109,8 +1109,8 @@ const roles = [
 
     // Midfield:
     {
+        // label: "Abräumer (Verteidigen)",
         id: "r24",
-        label: "Abräumer (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1157,8 +1157,8 @@ const roles = [
         }
     },
     {
+        // label: "Äuserer Mittelfeldspieler (Verteidigen)",
         id: "r25",
-        label: "Äuserer Mittelfeldspieler (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1205,8 +1205,8 @@ const roles = [
         }
     },
     {
+        // label: "Äuserer Mittelfeldspieler (Unterstützen)",
         id: "r26",
-        label: "Äuserer Mittelfeldspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1253,8 +1253,8 @@ const roles = [
         }
     },
     {
+        // label: "Äuserer Mittelfeldspieler (Angreifen)",
         id: "r27",
-        label: "Äuserer Mittelfeldspieler (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1301,8 +1301,8 @@ const roles = [
         }
     },
     {
+        // label: "Äußerer Spielmacher (Unterstützen)",
         id: "r28",
-        label: "Äußerer Spielmacher (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1349,8 +1349,8 @@ const roles = [
         }
     },
     {
+        // label: "Äußerer Spielmacher (Angreifen)",
         id: "r29",
-        label: "Äußerer Spielmacher (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1397,8 +1397,8 @@ const roles = [
         }
     },
     {
+        // label: "Äußerer Zielspieler (Unterstützen)",
         id: "r30",
-        label: "Äußerer Zielspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1445,8 +1445,8 @@ const roles = [
         }
     },
     {
+        // label: "Äußerer Zielspieler (Angreifen)",
         id: "r31",
-        label: "Äußerer Zielspieler (Angreifen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -1493,8 +1493,8 @@ const roles = [
         }
     },
     {
+        // label: "Ballerobernder Mittelfeldspieler (Verteidigen)",
         id: "r32",
-        label: "Ballerobernder Mittelfeldspieler (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1541,8 +1541,8 @@ const roles = [
         }
     },
     {
+        // label: "Ballerobernder Mittelfeldspieler (Unterstützen)",
         id: "r33",
-        label: "Ballerobernder Mittelfeldspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1589,8 +1589,8 @@ const roles = [
         }
     },
     {
+        // label: "Box-to-Box Mittelfeldspieler (Unterstützen)",
         id: "r34",
-        label: "Box-to-Box Mittelfeldspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -1637,8 +1637,8 @@ const roles = [
         }
     },
     {
+        // label: "Carrilero (Unterstützen)",
         id: "r35",
-        label: "Carrilero (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1685,8 +1685,8 @@ const roles = [
         }
     },
     {
+        // label: "Defensiver Flügelspieler (Verteidigen)",
         id: "r36",
-        label: "Defensiver Flügelspieler (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1733,8 +1733,8 @@ const roles = [
         }
     },
     {
+        // label: "Defensiver Flügelspieler (Unterstützen)",
         id: "r37",
-        label: "Defensiver Flügelspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1781,8 +1781,8 @@ const roles = [
         }
     },
     {
+        // label: "Enganche (Unterstützen)",
         id: "r38",
-        label: "Enganche (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1829,8 +1829,8 @@ const roles = [
         }
     },
     {
+        // label: "Flügelspieler (Unterstützen)",
         id: "r39",
-        label: "Flügelspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1877,8 +1877,8 @@ const roles = [
         }
     },
     {
+        // label: "Flügelspieler (Angreifen)",
         id: "r40",
-        label: "Flügelspieler (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -1925,8 +1925,8 @@ const roles = [
         }
     },
     {
+        // label: "Inverser Außenstürmer (Unterstützen)",
         id: "r41",
-        label: "Inverser Außenstürmer (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -1973,8 +1973,8 @@ const roles = [
         }
     },
     {
+        // label: "Inverser Außenstürmer (Angreifen)",
         id: "r42",
-        label: "Inverser Außenstürmer (Angreifen)",
         attributes: {
             technical: {
                 finishing: 2,
@@ -2021,8 +2021,8 @@ const roles = [
         }
     },
     {
+        // label: "Inverser Flügelspieler (Unterstützen)",
         id: "r43",
-        label: "Inverser Flügelspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2069,8 +2069,8 @@ const roles = [
         }
     },
     {
+        // label: "Inverser Flügelspieler (Angreifen)",
         id: "r44",
-        label: "Inverser Flügelspieler (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2117,8 +2117,8 @@ const roles = [
         }
     },
     {
+        // label: "Mezzala (Unterstützen)",
         id: "r45",
-        label: "Mezzala (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2165,8 +2165,8 @@ const roles = [
         }
     },
     {
+        // label: "Mezzala (Angreifen)",
         id: "r46",
-        label: "Mezzala (Angreifen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -2213,8 +2213,8 @@ const roles = [
         }
     },
     {
+        // label: "Offensiver Mittelfeldspieler (Unterstützen)",
         id: "r47",
-        label: "Offensiver Mittelfeldspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2261,8 +2261,8 @@ const roles = [
         }
     },
     {
+        // label: "Offensiver Mittelfeldspieler (Angreifen)",
         id: "r48",
-        label: "Offensiver Mittelfeldspieler (Angreifen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -2309,8 +2309,8 @@ const roles = [
         }
     },
     {
+        // label: "Raumdeuter (Angreifen)",
         id: "r49",
-        label: "Raumdeuter (Angreifen)",
         attributes: {
             technical: {
                 finishing: 2,
@@ -2357,8 +2357,8 @@ const roles = [
         }
     },
     {
+        // label: "Regista (Unterstützen)",
         id: "r50",
-        label: "Regista (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2405,8 +2405,8 @@ const roles = [
         }
     },
     {
+        // label: "Schattenstürmer (Angreifen)",
         id: "r51",
-        label: "Schattenstürmer (Angreifen)",
         attributes: {
             technical: {
                 finishing: 2,
@@ -2453,8 +2453,8 @@ const roles = [
         }
     },
     {
+        // label: "Segundo Volante (Unterstützen)",
         id: "r52",
-        label: "Segundo Volante (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -2501,8 +2501,8 @@ const roles = [
         }
     },
     {
+        // label: "Segundo Volante (Angreifen)",
         id: "r53",
-        label: "Segundo Volante (Angreifen)",
         attributes: {
             technical: {
                 finishing: 2,
@@ -2549,8 +2549,8 @@ const roles = [
         }
     },
     {
+        // label: "Tiefer Sechser (Verteidigen)",
         id: "r54",
-        label: "Tiefer Sechser (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2597,8 +2597,8 @@ const roles = [
         }
     },
     {
+        // label: "Vertikaler Spielmacher (Unterstützen)",
         id: "r55",
-        label: "Vertikaler Spielmacher (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2645,8 +2645,8 @@ const roles = [
         }
     },
     {
+        // label: "Vorgeschobener Spielmacher (Unterstützen)",
         id: "r56",
-        label: "Vorgeschobener Spielmacher (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2693,8 +2693,8 @@ const roles = [
         }
     },
     {
+        // label: "Vorgeschobener Spielmacher (Angreifen)",
         id: "r57",
-        label: "Vorgeschobener Spielmacher (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2741,8 +2741,8 @@ const roles = [
         }
     },
     {
+        // label: "Zentraler Mittelfeldspieler (Verteidigen)",
         id: "r58",
-        label: "Zentraler Mittelfeldspieler (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2789,8 +2789,8 @@ const roles = [
         }
     },
     {
+        // label: "Zentraler Mittelfeldspieler (Unterstützen)",
         id: "r59",
-        label: "Zentraler Mittelfeldspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2837,8 +2837,8 @@ const roles = [
         }
     },
     {
+        // label: "Zentraler Mittelfeldspieler (Angreifen)",
         id: "r60",
-        label: "Zentraler Mittelfeldspieler (Angreifen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2885,8 +2885,8 @@ const roles = [
         }
     },
     {
+        // label: "Zurückgezogener Spielmacher (Verteidigen)",
         id: "r61",
-        label: "Zurückgezogener Spielmacher (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2933,8 +2933,8 @@ const roles = [
         }
     },
     {
+        // label: "Zurückgezogener Spielmacher (Unterstützen)",
         id: "r62",
-        label: "Zurückgezogener Spielmacher (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -2983,8 +2983,8 @@ const roles = [
 
     // Striker
     {
+        // label: "Falsche Neun (Unterstützen)",
         id: "r63",
-        label: "Falsche Neun (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -3031,8 +3031,8 @@ const roles = [
         }
     },
     {
+        // label: "Hängende Spitze (Unterstützen)",
         id: "r64",
-        label: "Hängende Spitze (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -3079,8 +3079,8 @@ const roles = [
         }
     },
     {
+        // label: "Hängende Spitze (Angreifen)",
         id: "r65",
-        label: "Hängende Spitze (Angreifen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -3127,8 +3127,8 @@ const roles = [
         }
     },
     {
+        // label: "Knipser (Angreifen)",
         id: "r66",
-        label: "Knipser (Angreifen)",
         attributes: {
             technical: {
                 finishing: 2,
@@ -3175,8 +3175,8 @@ const roles = [
         }
     },
     {
+        // label: "Kompletter Stürmer (Unterstützen)",
         id: "r67",
-        label: "Kompletter Stürmer (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -3223,8 +3223,8 @@ const roles = [
         }
     },
     {
+        // label: "Kompletter Stürmer (Angreifen)",
         id: "r68",
-        label: "Kompletter Stürmer (Angreifen)",
         attributes: {
             technical: {
                 finishing: 2,
@@ -3271,8 +3271,8 @@ const roles = [
         }
     },
     {
+        // label: "Pressender Stürmer (Verteidigen)",
         id: "r69",
-        label: "Pressender Stürmer (Verteidigen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -3319,8 +3319,8 @@ const roles = [
         }
     },
     {
+        // label: "Pressender Stürmer (Unterstützen)",
         id: "r70",
-        label: "Pressender Stürmer (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 0,
@@ -3367,8 +3367,8 @@ const roles = [
         }
     },
     {
+        // label: "Pressender Stürmer (Angreifen)",
         id: "r71",
-        label: "Pressender Stürmer (Angreifen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -3415,8 +3415,8 @@ const roles = [
         }
     },
     {
+        // label: "Stoßstürmer (Angreifen)",
         id: "r72",
-        label: "Stoßstürmer (Angreifen)",
         attributes: {
             technical: {
                 finishing: 2,
@@ -3463,8 +3463,8 @@ const roles = [
         }
     },
     {
+        // label: "Trequartista (Angreifen)",
         id: "r73",
-        label: "Trequartista (Angreifen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -3511,8 +3511,8 @@ const roles = [
         }
     },
     {
+        // label: "Zielspieler (Unterstützen)",
         id: "r74",
-        label: "Zielspieler (Unterstützen)",
         attributes: {
             technical: {
                 finishing: 1,
@@ -3559,8 +3559,8 @@ const roles = [
         }
     },
     {
+        // label: "Zielspieler (Angreifen)",
         id: "r75",
-        label: "Zielspieler (Angreifen)",
         attributes: {
             technical: {
                 finishing: 2,
