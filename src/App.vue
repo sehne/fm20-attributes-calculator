@@ -7,6 +7,7 @@
       <!-- Export players -->
       <!-- Help page -->
       <!-- Role complexity -->
+      <!-- sort table -->
       <!-- parse player improvement/refactoring -->
 
       <div class="tabs">
@@ -197,8 +198,8 @@
         <hr style="width: 100%" />
         <div class="player-list">
           <div class="table-header">
-            <div class="table-name">Name</div>
-            <div class="table-rating">Rating</div>
+            <div class="table-name" @click="sortPlayersBy('name')">Name</div>
+            <div class="table-rating" @click="sortPlayersBy('rating')">Rating</div>
             <div class="table-roles">Roles</div>
           </div>
 
@@ -377,6 +378,26 @@ export default {
     },
     sortByValue(x, y) {
       return x[1].localeCompare(y[1]);
+    },
+    sortPlayersBy(sortBy) {
+      let sortFunction = () => {};
+      switch (sortBy) {
+        case "rating": {
+          sortFunction = (x, y) =>
+            this.getBestRating(y) - this.getBestRating(x);
+          break;
+        }
+        case "name": {
+          sortFunction = (x, y) => x.name.localeCompare(y.name);
+          break;
+        }
+      }
+      this.savedPlayers.sort(sortFunction);
+    },
+    getBestRating(player) {
+      return this.getRoles(player.attributes)
+        .shift()
+        .rating.toFixed(2);
     },
     getRoles(attributes) {
       let myRoles = roles.map(r => {
@@ -625,13 +646,15 @@ body {
   display: flex;
   flex: 1;
   font-weight: bold;
-  padding-bottom: 4px;
+  padding-bottom: 8px;
 
   .table-name {
     flex: 3;
+    cursor: pointer;
   }
   .table-rating {
     flex: 2;
+    cursor: pointer;
   }
   .table-roles {
     flex: 5;

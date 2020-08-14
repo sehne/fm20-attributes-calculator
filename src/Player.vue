@@ -62,8 +62,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 4px 0;
-  padding: 4px 0 2px;
+  padding: 8px 0 6px;
   border-top: white 1px solid;
 
   .player-name {
