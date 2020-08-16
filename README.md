@@ -1,5 +1,5 @@
 # fm20-attributes-calculator
-Calculate Player Values & Positional Strengh
+Calculate Player Values & Positional Strength
 
 ## Project setup
 ```

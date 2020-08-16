@@ -8,7 +8,7 @@
     <div class="player-rating">{{getBestRating()}}</div>
     <div class="player-roles">
       <div v-for="role in getTopFourRoles()" v-bind:key="role.id">
-        <div class="player-role">{{role.rating.toFixed(2)}} - {{translations.roles[role.id]}}</div>
+        <div class="player-role">{{role.rating.toFixed(2)}} - {{translate.roles[role.id]}}</div>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@ export default {
       type: Function,
       required: true
     },
-    translations: {
+    translate: {
       type: Object,
       required: true
     }
@@ -38,7 +38,6 @@ export default {
   },
   mounted() {
     // console.log(this.$props);
-    // console.log(this.$props.getRoles(this.$props.player.attributes));
   },
   methods: {
     getTopFourRoles() {

@@ -3,13 +3,6 @@
     <div class="header">
       <div class="app-name">FM20 Attributes Calculator</div>
 
-      <!-- TODO LIST: -->
-      <!-- Export players -->
-      <!-- Help page -->
-      <!-- Role complexity -->
-      <!-- sort table -->
-      <!-- parse player improvement/refactoring -->
-
       <div class="tabs">
         <button
           class="tablinks"
@@ -34,14 +27,13 @@
         <textarea
           v-bind:value="textToParse"
           v-on:input="updateText($event.target.value)"
-          placeholder="paste Text from Image"
+          placeholder="paste text to parse"
           class="textarea"
         />
 
         <div class="parse-buttons">
           <button class="pares-button" @click="parseText()">Parse Attributes</button>
-          <button class="pares-button" @click="log()">log</button>
-          <button class="pares-button" @click="parseText2()">Add Players from .rtf</button>
+          <button class="pares-button" @click="parseText2()">Parse Players from .rtf</button>
         </div>
         <div class="flex-row main-content">
           <div class="flex-column">
@@ -71,7 +63,7 @@
                       v-bind:attribute="attributes.technical[attributeKey]"
                       v-bind:label="attributes.technical[attributeKey].label"
                       @[attributeKey]="updateValue"
-                      v-bind:translations="translations"
+                      v-bind:translate="translations"
                     />
                   </div>
                 </div>
@@ -86,7 +78,7 @@
                       v-bind:attribute="attributes.mental[attributeKey]"
                       v-bind:label="attributes.mental[attributeKey].label"
                       @[attributeKey]="updateValue"
-                      v-bind:translations="translations"
+                      v-bind:translate="translations"
                     />
                   </div>
                 </div>
@@ -101,7 +93,7 @@
                       v-bind:attribute="attributes.physical[attributeKey]"
                       v-bind:label="attributes.physical[attributeKey].label"
                       @[attributeKey]="updateValue"
-                      v-bind:translations="translations"
+                      v-bind:translate="translations"
                     />
                   </div>
                 </div>
@@ -121,7 +113,7 @@
                       v-bind:isFactor="true"
                       v-bind:attribute="factors.technical[attributeKey]"
                       v-bind:label="factors.technical[attributeKey].label"
-                      v-bind:translations="translations"
+                      v-bind:translate="translations"
                       @[attributeKey]="updateValue"
                     />
                   </div>
@@ -137,7 +129,7 @@
                       v-bind:isFactor="true"
                       v-bind:attribute="factors.mental[attributeKey]"
                       v-bind:label="factors.mental[attributeKey].label"
-                      v-bind:translations="translations"
+                      v-bind:translate="translations"
                       @[attributeKey]="updateValue"
                     />
                   </div>
@@ -153,7 +145,7 @@
                       v-bind:isFactor="true"
                       v-bind:attribute="factors.physical[attributeKey]"
                       v-bind:label="factors.physical[attributeKey].label"
-                      v-bind:translations="translations"
+                      v-bind:translate="translations"
                       @[attributeKey]="updateValue"
                     />
                   </div>
@@ -182,7 +174,6 @@
               <div class="add-player-label">Player Name:</div>
               <input class="add-player-input" v-model="playerName" />
               <button class="add-player-button" @click="addPlayer()">add</button>
-              <!-- <button class="add-player-button" @click="exportPlayers()">export</button> -->
               <button class="add-player-button" v-if="selectedPlayer" @click="deletePlayer()">delete</button>
               <button class="add-player-button" v-if="!selectedPlayer" @click="resetValues()">reset</button>
             </div>
@@ -207,14 +198,67 @@
             <player
               v-bind:player="player"
               v-bind:getRoles="getRoles"
-              v-bind:translations="translations"
+              v-bind:translate="translations"
               @playerSelected="playerSelected"
             />
           </div>
         </div>
       </div>
 
-      <div id="help" v-if="currentTab === 'help'"></div>
+      <div id="help" v-if="currentTab === 'help'">
+        <h2>FM20 Attributes Calculator</h2>
+        <div>Calculate Player Values & Positional Strength based on their Attributes</div>
+
+        <h3>Entering Attributes</h3>
+        <div>There are three Options for entering the Attribute values of Players:</div>
+        <h4>Manually</h4>
+        <div>You can just type them in manually. Once you add a Player to the list you can still adjust his attributes manually when selecting him from the list.</div>
+        <h4>Parse Attributes (single Player)</h4>
+        <div>
+          Paste a Text into the textarea and it will take the first 34 digits and fills the attributes with them in the same order.
+          You can use this to make a screenshot of a Players attributes like in the following Image.
+          <br />
+          <img src="./assets/images/attributesScreenshot.png" />
+          <br />Then Upload the image to a image to text converter site (like
+          <a
+            href="https://www.prepostseo.com/image-to-text"
+          >https://www.prepostseo.com/image-to-text</a> or
+          <a
+            href="https://smallseotools.com/image-to-text-converter/"
+          >https://smallseotools.com/image-to-text-converter/</a>). Let it convert the image and then paste the text result into the textarea at the top and click "Parse Attributes" and it will fill in the attribute values of that player. This only works if the attributes are in the same order though, so make sure to use the correct language.
+        </div>
+        <h4>Parse per .rtf File</h4>
+        <div>
+          In FM20 create a new table with the player name and the values for all attributes. It is important that the order of the attributes in the view is the same as the attributes for this calculator.
+          Then Export the Table to a .rtf file by clicking FM at the Top Right > Print Screen > Text File.
+          Now you can open the file copy all content EXCEPT the Header of the Table with the Attribute names and paste it into the textarea and click "Parse Players from .rtf". This should add all Players into the Table.
+          <br />
+          <img src="./assets/images/parseFromRtf.gif" />
+        </div>
+        <h3>Rating calculation</h3>
+        <div>
+          Every Role will have a few "important" and "key" attributes, while the rest is judged as a "basic" attribute.
+          The following image highlights the Attributes for the Role "Advanced Playmaker (Support)", with important attributes being highlighted blue and key attributes being highlighted green.
+          <br />
+          <img src="./assets/images/roleHighlighting.png" />
+          <br />The default Formula to calculate the Rating only considers role related attributes. It takes the average of all relevant attributes, with important attributes carrying 40% and key attributes 60% of the weight.
+          You can adjust the Rating calculation by clicking on the "Formula" tab.
+        </div>
+        <h3>adding new Language support</h3>
+        <div>
+          To add support for a new language, i would need a .json file with all the attributes/roles like this one for english:
+          <br />
+          <a
+            href="https://github.com/sehne/fm20-attributes-calculator/blob/master/src/assets/languages/en.json"
+          >https://github.com/sehne/fm20-attributes-calculator/blob/master/src/assets/languages/en.json</a>
+          <br />Then either submit a pull request or message me on github or
+          <a
+            href="https://reddit.com/user/eXtreme206"
+          >reddit</a>
+          <br />
+          <br />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -243,9 +287,6 @@ export default {
   },
   computed: {},
   methods: {
-    log() {
-      this.getAttributeKeys("technical");
-    },
     updateValue(obj) {
       if (obj.isFactor) {
         this.factors[obj.type][obj.id].factor = obj.newRating;
@@ -340,9 +381,6 @@ export default {
     },
     resetValues() {
       this.attributes = _.cloneDeep(attributesData);
-    },
-    exportPlayers() {
-      // TODO create Text that can be used to import players again
     },
     playerSelected(player) {
       if (player.selected) {
@@ -528,6 +566,10 @@ body {
     align-items: center;
   }
 
+  #help {
+    text-align: center;
+  }
+
   .main-content {
     height: 455px;
   }
@@ -659,5 +701,10 @@ body {
   .table-roles {
     flex: 5;
   }
+}
+
+img {
+  max-width: 90%;
+  alignself: center;
 }
 </style>
