@@ -229,8 +229,11 @@
         </div>
         <h4>Parse per .rtf File</h4>
         <div>
-          In FM20 create a new table with the player name and the values for all attributes. It is important that the order of the attributes in the view is the same as the attributes for this calculator.
-          Then Export the Table to a .rtf file by clicking FM at the Top Right > Print Screen > Text File.
+          In FM20 create a new table with the player name and the values for all attributes. It is important that the order of the attributes in the view is the same as the attributes for this calculator. You can also use this View and import it into your game:
+          <a
+            href="https://github.com/sehne/fm20-attributes-calculator/blob/master/src/assets/AttributesEN.fmf"
+          >https://github.com/sehne/fm20-attributes-calculator/blob/master/src/assets/AttributesEN.fmf</a>
+          <br />Then Export the Table to a .rtf file by clicking FM at the Top Right > Print Screen > Text File.
           Now you can open the file copy all content EXCEPT the Header of the Table with the Attribute names and paste it into the textarea and click "Parse Players from .rtf". This should add all Players into the Table.
           <br />
           <img src="./assets/images/parseFromRtf.gif" />
@@ -705,6 +708,9 @@ body {
 
 img {
   max-width: 90%;
-  alignself: center;
+}
+
+a {
+  color: cadetblue;
 }
 </style>
