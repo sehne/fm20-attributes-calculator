@@ -3606,6 +3606,102 @@ const roles = [
             }
         }
     },
+    {
+        // label: "Defensiver Mittelfeldspieler (Verteidigen)",
+        id: "r76",
+        attributes: {
+            technical: {
+                finishing: 0,
+                firstTouch: 0,
+                marking: 1,
+                dribbling: 0,
+                corners: 0,
+                penaltyTaking: 0,
+                crossing: 0,
+                freeKickTaking: 0,
+                heading: 0,
+                passing: 1,
+                tackling: 2,
+                technique: 0,
+                longThrows: 0,
+                longShots: 0,
+            },
+            mental: {
+                aggression: 1,
+                anticipation: 2,
+                workRate: 2,
+                decisions: 1,
+                flair: 0,
+                leadership: 0,
+                concentration: 2,
+                bravery: 0,
+                composure: 1,
+                offTheBall: 0,
+                positioning: 2,
+                teamwork: 2,
+                vision: 0,
+                determination: 0,
+            },
+            physical: {
+                acceleration: 0,
+                stamina: 2,
+                balance: 0,
+                agility: 0,
+                naturalFitness: 0,
+                strength: 1,
+                pace: 0,
+                jumpingReach: 0,
+            }
+        }
+    },
+    {
+        // label: "Defensiver Mittelfeldspieler (Unterstützen)",
+        id: "r77",
+        attributes: {
+            technical: {
+                finishing: 0,
+                firstTouch: 1,
+                marking: 1,
+                dribbling: 0,
+                corners: 0,
+                penaltyTaking: 0,
+                crossing: 0,
+                freeKickTaking: 0,
+                heading: 0,
+                passing: 1,
+                tackling: 2,
+                technique: 0,
+                longThrows: 0,
+                longShots: 0,
+            },
+            mental: {
+                aggression: 1,
+                anticipation: 2,
+                workRate: 2,
+                decisions: 1,
+                flair: 0,
+                leadership: 0,
+                concentration: 2,
+                bravery: 0,
+                composure: 1,
+                offTheBall: 0,
+                positioning: 2,
+                teamwork: 2,
+                vision: 0,
+                determination: 0,
+            },
+            physical: {
+                acceleration: 0,
+                stamina: 2,
+                balance: 0,
+                agility: 0,
+                naturalFitness: 0,
+                strength: 1,
+                pace: 0,
+                jumpingReach: 0,
+            }
+        }
+    },
 ];
 
 export default roles;
