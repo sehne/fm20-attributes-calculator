@@ -19,6 +19,7 @@
       <select v-model="currentLanguage" class="language-select" @change="loadNewLanguage($event)">
         <option value="de">de</option>
         <option value="en">en</option>
+        <option value="es">es</option>
       </select>
     </div>
 
